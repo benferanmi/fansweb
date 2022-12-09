@@ -1,8 +1,8 @@
 import React from 'react'
-import Backtotop from './Component/Backtotop'
-import Footer from './Component/Footer'
-import Header from './Component/Header'
-import './privacy.css'
+import Backtotop from '../Component/Backtotop'
+import Footer from '../Component/Footer'
+import Header from '../Component/Header'
+import '../css/privacy.css'
 
 const Privacy = () => {
   return (

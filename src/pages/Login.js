@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Component/Footer";
-import Header from "./Component/Header";
-import banner from "./image/model/twe.jpg";
-import "./login.css";
+import Footer from "../Component/Footer";
+import Header from "../Component/Header";
+import banner from "../image/model/twe.jpg";
+import "../css/login.css";
 
 const Login = () => {
   const [user, setUser] = useState({ username: "", password: "" });

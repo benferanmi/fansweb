@@ -1,12 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Contact from "./Contact";
-import Home from "./Home";
-import Login from "./Login";
-import Privacy from "./Privacy";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Privacy from "./pages/Privacy";
 import ModelDetails from "./Models/ModelDetails";
 import Models from "./Models/Models";
-import Signup from "./Signup";
+import Signup from "./pages/Signup";
 
 function App() {
   return (

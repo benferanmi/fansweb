@@ -127,7 +127,11 @@
     flex-direction: row;
     gap: 20px;
 }
-
+.signup-select {
+    height: 30px;
+    outline: none;
+    border: 1px solid gray;
+}
 @media screen and (max-width: 500px)  {
     .signup {
         width: 100%;
