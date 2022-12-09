@@ -1,0 +1,195 @@
+.App {
+  text-align: center;
+}
+header {
+  width: 99%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  background-color: lightblue;
+  color: white;
+  position: fixed;
+  z-index: 99999999;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.header-left {
+  font-size: 24px;
+  font-family: cursive, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+.header-left a {
+  text-decoration: none;
+  color: white;
+}
+.header-right button {
+  height: 50px ;
+  background-color: inherit ;
+  color: white;
+  border: none;
+  outline: none ;
+  color: white;
+  font-size: 24px;
+  font-weight: 650;
+}
+
+.header-right button a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-right button a:hover {
+  color: red;
+}
+
+.banner {
+  height: 400px;
+  padding-top: 83px;
+  position: relative;
+}
+.banner article {
+  height: 50vh;
+}
+.banner img {
+  width: 100%;
+}
+.arrowOne {
+  left: 10px;
+  position: absolute;
+  top: calc(50% - 10px);
+}
+.arrowTwo {
+  top: calc(50% - 10px);
+  right: 10px;
+  position: absolute;
+}
+
+.arrowOne svg, .arrowTwo svg {
+  height: 40px;
+  width: 40px;
+  color: white;
+}
+.miconone {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.userdetails {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  position: absolute;
+  top: 80%;
+  left: 10px;
+}
+.detailsone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+}
+
+.button-container {
+  display: block;
+  text-align: center;
+  margin: 30px 0px;
+}
+
+.model-button {
+  height: 50px;
+  width: 150px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid lightblue;
+  color: lightblue;
+  background-color: white;
+  font-size: 24px;
+}
+
+.model-button:hover {
+  color: red;
+  background-color: lightblue;
+  border: 2px solid red;
+}
+.banner-ruler {
+  position: absolute;
+  bottom: calc(30% - 100px);
+  width: 100%;
+  text-align: center;
+}
+.banner-ruler span {
+  display: flex;
+  gap: 10px;
+}
+.banner-ruler span hr {
+  width: 10px;
+  color: white;
+  height: 3px;
+}
+.model-button-two {
+  background-color: lightblue;
+  color: black;
+  font-size: 24px;
+  border: none;
+  outline: none ;
+  border-radius: 10px;
+  padding: 10px ;
+  width: 400px;
+}
+
+.model-button-two a {
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    width: 98%;
+    padding: 0px 10px;
+    height: 80px;
+  }
+  
+  .header-left {
+    font-size: 16px;
+    font-family: cursive, sans-serif;
+    font-weight: bold;
+  }
+  .header-right button {
+    font-size: 15px;
+  }
+.banner {
+  height: 200px;
+  padding-top: 23px;
+}
+.banner img {
+  height: 190px;
+}
+.ptop {
+  padding-top: 100px ;
+}
+.banner article {
+  height: 30vh;
+}
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*****this is my name.**/

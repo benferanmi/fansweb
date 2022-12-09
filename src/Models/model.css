@@ -1,0 +1,85 @@
+
+.models {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+  }
+  
+  
+  .model-box {
+    height: 450px;
+    width: 300px ;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: lightblue;
+    padding-top: 10px;
+    position: relative;
+  }
+  
+  .model-box:hover {
+    color: red !important;
+  }
+  .model-box img {
+    height: 400px;
+    width: 295px;
+  }
+  
+  .model-box img:hover {
+    opacity: 0.7;
+    background-color: aqua;
+  }
+  
+  .modelname span {
+    padding-right: 10px;
+  }
+  
+  .modelname span:hover {
+    color: red;
+  }
+  .modelname i {
+    text-align: center;
+    padding-top: 2px;
+  }
+    
+@media screen and (max-width: 500px) {
+.models {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.model-box {
+  height: 350px;
+  width: 270px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: lightblue;
+  padding-top: 10px;
+  position: relative;
+}
+.model-box img {
+  height: 320px;
+  width: 92%;
+}
+.modelname {
+  margin: 0;
+}
+.model-button-two {
+  font-size: 18px;
+  border-radius: 10px;
+  width: 200px;
+}
+.model-button-two a {
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+}
+}
