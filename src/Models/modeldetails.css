@@ -1,0 +1,213 @@
+.modeldetails {
+  width: 90%;
+  margin: auto;
+}
+
+.detailshead {
+  width: 100%;
+  position: relative;
+}
+
+.detailshead .bgimg {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+}
+
+.profileimg {
+  position: absolute;
+  bottom: -70px;
+}
+
+.profileimg .avatar {
+  width: 130px;
+  height: 130px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  padding: 2px;
+  border: 2px solid blue;
+  border-radius: 50%;
+}
+.details-section-one {
+  width: 89%;
+  margin-left: 11%;
+  display: flex;
+  justify-content: space-between;
+}
+.details-name .name2 {
+  color: blue;
+  font-size: 20px;
+  font-weight: 600;
+}
+.pri-button {
+  color: black;
+  padding: 0.7em 2em;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 0.5em;
+  min-height: 40px;
+  border: none;
+  outline: none;
+  height: auto;
+  background-color: aqua;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+}
+
+.pri-button-2 {
+  color: #fff;
+  padding: 0.7em 2em;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 0.5em;
+  min-height: 40px;
+  height: auto;
+  background-color: gold;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+}
+.details-name p {
+  margin: 0;
+  padding: 0;
+}
+
+.svg-space {
+  padding-right: 5px;
+}
+
+.details-about {
+  margin-top: 50px;
+}
+
+.details-about h3 {
+  color: gold;
+  font-weight: 450px;
+}
+
+.details-spec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.details-button {
+  margin-top: 40px;
+  display: block;
+  text-align: center;
+}
+
+.details-button button {
+  width: 30%;
+  background: lightblue;
+  color: black;
+  font-weight: 600;
+  border-radius: 12px;
+  height: 60px;
+  margin: 2px 15px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+}
+.details-model-info {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.details-others {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+}
+.details-others span {
+    width: 25%;
+    display: block;
+    text-align: center;
+    height: 50px;
+    padding-top: 10px;
+}
+.threeborder {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom:0px  ;
+}
+.details-hr {
+    padding: 0px;
+    margin: 0px;
+}
+
+.details-others span svg {
+    font-size: 30px;
+}
+
+.mainhr-info {
+  height: 400px ;
+  font-size: 30px;
+  text-align: center;
+  display: block;
+  padding-top: 150px;
+  background-color: lightblue;
+}
+
+@media screen and (max-width: 500px)  { 
+  .detailshead .bgimg {
+    height: 100px;
+  }
+  .profileimg {
+    bottom: -50px;
+  }
+  .profileimg .avatar {
+    height: 75px;
+    width: 75px;
+  }
+  .details-section-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 0px;
+  }
+  .details-name {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .details-head {
+    margin-top: 20px;
+    display: block;
+  }
+
+  .details-head  button {
+    display: block;
+    text-align: left;
+  }
+  .details-spec {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .details-button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+  }
+  .details-button button {
+    width: 100%;
+    height: 40px;
+  }
+  .mainhr-info {
+    height: 200px;
+  }
+}

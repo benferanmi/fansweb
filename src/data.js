@@ -1,12 +1,13 @@
 import one from "./image/model/one.jpg";
-// import two from './image/model/two.jpg'
-// import three from './image/model/three.jpg'
-// import four from './image/model/four.jpg'
-// import five from './image/model/five.jpg'
-// import six from './image/model/six.jpg'
-// import seven from './image/model/seven.jpg'
-// import eight from './image/model/eight.jpg'
-// import nine from './image/model/nine.jpg'
+import two from "./image/model/two.jpg";
+import three from "./image/model/three.jpg";
+import four from "./image/model/four.jpg";
+import five from "./image/model/five.jpg";
+import six from "./image/model/six.jpg";
+import bg1 from "./image/bg1.jpg";
+import seven from './image/model/seven.jpg'
+import eight from './image/model/eight.jpg'
+import nine from './image/model/nine.jpg'
 // import ten from './image/model/ten.jpg'
 // import img1 from './image/model/1 (1).jpg'
 import img2 from "./image/model/1 (2).jpg";
@@ -48,15 +49,48 @@ export const data = [
   {
     name: "pracy",
     Image: img6,
+    "background-image": bg1,
+    discription:
+      "this is pracy and she is one of the best developer that i haveever met in my whole. Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers, Her Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. I enjoy humiliating and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. And I will do everything to pleasure Myself.",
+    gender: "Female",
+    weight: "55.6",
+    "sextual-orientation": "transgender",
+    "eyes-color": "black",
+    height: "65cm",
+    "zip-code": "23434",
     likenumber: 12,
     usernumber: 10,
     verified,
     color: "red",
     id: "1",
+    userImages: {
+      // this will store the images that the user want to be showing on the single model page.
+     imgOne: six, 
+      imgTwo: seven, 
+      imgThree: eight, 
+      imgFour: nine
+    }, 
+    userVideos: {
+      // this will store the videos that the user want to be showing on the single model page
+      vidOne: '',
+      vidTwo: ''
+    },
+    liveCon: "Live features is not available now.",
+    storeCon: "store and mechadise is not available at the moment",
   },
+
   {
     name: "Natalie john",
     Image: img2,
+    "background-image": three,
+    discription:
+    "this I enjoy humiliating and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. is pracy and she is one of the best developer that i haveever met in my whole. Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers, Her Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. And I will do everything to pleasure Myself.",
+  gender: "Female",
+  weight: "55.6",
+  "sextual-orientation": "monogender",
+  "eyes-color": "golder",
+  height: "45cm",
+  "zip-code": "23434",
     likenumber: 2,
     usernumber: 16,
     verified,
@@ -66,6 +100,15 @@ export const data = [
   {
     name: "Sumar Gunt",
     Image: img3,
+    "background-image": four,
+    discription:
+    "tHer Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. I enjoy humiliatinghis is pracy and she is one of the best developer that i haveever met in my whole. Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers,  and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. And I will do everything to pleasure Myself.",
+  gender: "Female",
+  weight: "55.6",
+  "sextual-orientation": "transgender",
+  "eyes-color": "black",
+  height: "65cm",
+  "zip-code": "23434",
     likenumber: 24,
     usernumber: 6,
     color: "white",
@@ -74,6 +117,15 @@ export const data = [
   {
     name: "precious ",
     Image: img4,
+    "background-image": five,
+    discription:
+    "Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers, Her Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. I enjoy humiliating and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. And I will do everything to pleasure Myself.",
+  gender: "Female",
+  weight: "55.6",
+  "sextual-orientation": "bigender",
+  "eyes-color": "blue",
+  height: "65cm",
+  "zip-code": "23434",
     likenumber: 80,
     usernumber: 66,
     color: "white",
@@ -82,6 +134,7 @@ export const data = [
   {
     name: "rouda rousey",
     Image: img8,
+    "background-image": two,
     likenumber: 27,
     usernumber: 14,
     verified,
@@ -163,7 +216,7 @@ export const data = [
     likenumber: 8,
     usernumber: 6,
     color: "white",
-    id: 14
+    id: 14,
   },
   {
     name: "rouda special ",
@@ -224,11 +277,11 @@ export const data = [
     usernumber: 56,
     verified,
     color: "red",
-    id: 21, 
+    id: 21,
     classme: "jss3",
     height: "she is taller that 10 feets",
     userdetails: {
-      discription: 'this is mowa she is one of the beautiful girls ever known'
-    }
+      discription: "this is mowa she is one of the beautiful girls ever known",
+    },
   },
 ];

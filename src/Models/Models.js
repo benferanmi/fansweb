@@ -10,8 +10,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { data } from "../data";
 import './model.css'
-import Header from "../Component/Header";
-import Footer from "../Component/Footer";
 
 const Models = () => {
 

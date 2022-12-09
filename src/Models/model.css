@@ -46,13 +46,13 @@
     
 @media screen and (max-width: 500px) {
 .models {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
   width: 90%;
   margin: auto;
-  justify-content: center;
-  align-items: center;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 
