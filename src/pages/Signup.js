@@ -6,18 +6,31 @@ import banner from "../image/model/twe.jpg";
 import "../css/signup.css";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [info, setUserInfo] = useState("please enter your details");
+  const [userType] = useState(["", "model", "user"])
+  //mapping around the usertype array ----->>>>> selecting
+  const AddUserType = userType.map(Add => Add)
+
+  // handling User Type Selection 
+  const handleUserType = (e) => {
+    let userT = userType[e.target.value]
+
+    //pushing gender option to the main user array.
+    setUser({...user, client: userT})
+  }
+
+
   const [user, setUser] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    username: "",
+    userName: "",
     password: "",
     passwordmatch: "",
-    displayname: "",
+    displayName: "",
+    client: "",
   });
-
-  const navigate = useNavigate();
 
   const handleSignUp = (e) => {
     const name = e.target.name;
@@ -32,27 +45,34 @@ const Signup = () => {
       const detailsRequired =
         user.password &&
         user.email &&
-        user.firstname &&
-        user.lastname &&
+        user.firstName &&
+        user.lastName &&
         user.passwordmatch &&
-        user.username;
-
-      if (detailsRequired && user.password === user.passwordmatch) {
-        localStorage.setItem("isrealfans", JSON.stringify(user));
+        user.userName &&
+        user.client;
+      //navigating user to login page.......
+      if (detailsRequired && user.password === user.passwordmatch && user.client === 'user') {
+        localStorage.setItem("user", JSON.stringify(user));
 
         localStorage.setItem("autenticated", true);
         localStorage.setItem("signup", true);
-
         navigate("/login");
 
         setUser({
-          firstname: "",
-          lastname: "",
-          username: "",
+          firstName: "",
+          lastName: "",
+          userName: "",
           password: "",
           passwordmatch: "",
         });
-      } else {
+      } 
+      //navigating models to additional content 
+      else if (detailsRequired && user.password === user.passwordmatch && user.client === 'model') {
+        localStorage.setItem("models", JSON.stringify(user))
+
+        navigate("/modelRegistration")
+      }
+      else {
         window.alert(info);
       }
     },
@@ -81,38 +101,38 @@ const Signup = () => {
             <div className="form-flex">
               <input
                 type="text"
-                name="firstname"
-                id="firstname"
+                name="firstName"
+                id="firstName"
                 placeholder="firstname"
                 onChange={handleSignUp}
-                value={user.firstname}
+                value={user.firstName}
               />
               <input
                 type="text"
-                name="lastname"
-                id="lastname"
+                name="lastName"
+                id="lastName"
                 placeholder="Lastname"
                 onChange={handleSignUp}
-                value={user.lastname}
+                value={user.lastName}
               />
             </div>
             <div className="form-flex">
               <input
                 type="text"
-                name="displayname"
-                id="displayname"
+                name="displayName"
+                id="displayName"
                 placeholder="displayname"
                 onChange={handleSignUp}
-                value={user.displayname}
+                value={user.displayName}
                 autoComplete="off"
               />
               <input
                 type="text"
-                name="username"
-                id="username"
+                name="userName"
+                id="userName"
                 placeholder="Username"
                 onChange={handleSignUp}
-                value={user.username}
+                value={user.userName}
                 autoComplete="off"
               />
             </div>
@@ -146,9 +166,10 @@ const Signup = () => {
               />
             </div>
             <label htmlFor="client-type">What are you reqistering for? </label>
-            <select required name="client-type" id="client-type" className="signup-select">
-              <option value="user" selected >User</option>
-              <option value="model">Models</option>
+            <select onChange={e => handleUserType(e)}  name="client" id="client-type" className="signup-select">
+            {
+                    AddUserType.map((address, key) => <option value={key} >{address} </option>)
+                }
             </select>
 
             <button type="submit" onClick={handleSubmit}>

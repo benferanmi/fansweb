@@ -1,57 +1,58 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState } from 'react'
+import Footer from '../Component/Footer';
+import "../Models/modeldetails.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
+import Header from '../Component/Header';
 import {
   MessageSvg,
   ShareSvg,
 } from "../Component/Svg";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
-import { data } from "../data";
-import "./modeldetails.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
-import Backtotop from "../Component/Backtotop";
-import ModelInfo from "./ModelInfo";
+import ModelInfo from '../Models/ModelInfo';
+import Backtotop from '../Component/Backtotop';
+import { fileData } from '../fileData';
 
-function ModelDetails() {
-  const { productId } = useParams();
-  const [userData, setUserData] = useState(data);
+
+const ProfilePage = () => {
+  //getting all details of the user.
+  const models = localStorage.getItem('models')    
+
+  const [previousDetails, setPreviousDetails] = useState(JSON.parse(models))
   const [showAbout, setShowAbout] = useState(true);
+    
+  console.log(previousDetails)
 
-
-  const singleModel = userData.find((prod) => prod.id === productId);
-
-
-  const AboutShowhandler = () => {
+// showing about content handler and components
+    const AboutShowhandler = () => {
     setShowAbout(!showAbout);
   };
-
   const AboutContent = () => {
-    return singleModel.discription;
+    return previousDetails.discription;
   };
 
 
   return (
-    <>
+    <div>
+       <>
       <Header />
       <div className="header-space"></div>
       <div className="modeldetails">
         <div className="detailshead">
           <img
-            src={singleModel.backgroundImage}
-            alt={`${singleModel.name} background`}
+            src={previousDetails.backgroundImage}
+            alt={`${previousDetails.name} background`}
             className="bgimg"
           />
           <div className="profileimg">
-            <img alt="Avatar" src={singleModel.image} className="avatar" />
+            <img alt="Avatar" src={previousDetails.image} className="avatar" />
           </div>
         </div>
         <section className="details-section-one">
           <div className="details-name">
             <p className="mainname">
-              {singleModel.name} {singleModel.verified}
+              {previousDetails.name} {previousDetails.verified}
             </p>
-            <p className="name2">@ {singleModel.id}</p>
+            <p className="name2">@ {previousDetails.id}</p>
           </div>
 
           <div className="details-head button">
@@ -81,16 +82,16 @@ function ModelDetails() {
 
         <section className="details-spec">
           <div className="spec-1">
-            <p>Gender: {singleModel.gender}</p>
-            <p>Weight: {singleModel.weight}</p>
+            <p>Gender: {previousDetails.gender}</p>
+            <p>Weight: {previousDetails.weight}</p>
           </div>
           <div className="spec-2">
-            <p>Sexual orientation: {singleModel.sextualOrientation}</p>
-            <p>Eye Color: {singleModel.eyesColor}</p>
+            <p>Sexual orientation: {previousDetails.sextualOrientation}</p>
+            <p>Eye Color: {previousDetails.eyesColor}</p>
           </div>
           <div className="spec-3">
-            <p>Height: {singleModel.height}</p>
-            <p>Zip-Code: {singleModel.zipCode}</p>
+            <p>Height: {previousDetails.height}</p>
+            <p>Zip-Code: {previousDetails.zipCode}</p>
           </div>
         </section>
 
@@ -102,7 +103,7 @@ function ModelDetails() {
         {/* other contents */}
         <section className="details-model-info">
           <div >
-            <ModelInfo singleModel={singleModel}/>
+            <ModelInfo previousDetails={previousDetails}/>
           </div>
         </section>
       </div>
@@ -110,7 +111,8 @@ function ModelDetails() {
       <Backtotop />
       <Footer />
     </>
-  );
+    </div>
+  )
 }
 
-export default ModelDetails;
+export default ProfilePage

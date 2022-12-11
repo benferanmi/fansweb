@@ -6,7 +6,7 @@ import banner from "../image/model/twe.jpg";
 import "../css/login.css";
 
 const Login = () => {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ userName: "", password: "" });
 
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Login = () => {
 
     const data = JSON.parse(localStorage.getItem("isrealfans"));
     console.log(data.username);
-    if (data.username !== user.username && data.password !== user.password) {
+    if (data.username !== user.userName && data.password !== user.password) {
       console.log("details is not correct");
       window.alert("The details you input is not correct. Kindly input your username and password again...")
     } else {
@@ -51,11 +51,11 @@ const Login = () => {
           <form>
             <input
               type="text"
-              name="username"
-              id="username"
+              name="userName"
+              id="userName"
               placeholder="Enter your Username"
               onChange={handleSignUp}
-              value={user.username}
+              value={user.userName}
               required
             />
 

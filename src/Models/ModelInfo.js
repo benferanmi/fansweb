@@ -128,13 +128,13 @@ const ModelInfo = (singleModel) => {
       const UserLive = () => {
         return (
           <>
-          <p> Live View is not available at the moment. {singleModel.liveCon}</p>
+          <p> Live View is not available at the moment.</p>
           </>
         )
       }
       const UserMechandise = () => {
         <>
-        <p> Store Content Are Not available at the Moment{singleModel.storeCon}</p>
+        <p> Store Content Are Not available at the Moment</p>
         </>
       }
     

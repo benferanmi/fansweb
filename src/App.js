@@ -7,6 +7,8 @@ import Privacy from "./pages/Privacy";
 import ModelDetails from "./Models/ModelDetails";
 import Models from "./Models/Models";
 import Signup from "./pages/Signup";
+import ModelForm from "./pages/Form";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="privacy" element={<Privacy />} />
         <Route exact path="/models" element={<Models />}></Route>
         <Route path="/models/:productId" element={<ModelDetails />}></Route>
+        <Route path="modelRegistration" element={<ModelForm />}></Route>
+        <Route path="profile" element={<ProfilePage />}></Route>
       </Routes>
     </>
   );

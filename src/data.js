@@ -48,18 +48,20 @@ let verified = (
 export const data = [
   {
     name: "pracy",
-    Image: img6,
-    "background-image": bg1,
+    firstName: '',
+    lastName: '',
+    image: img6,
+    backgroundImage: bg1,
     discription:
       "this is pracy and she is one of the best developer that i haveever met in my whole. Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers, Her Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. I enjoy humiliating and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. And I will do everything to pleasure Myself.",
     gender: "Female",
     weight: "55.6",
-    "sextual-orientation": "transgender",
-    "eyes-color": "black",
+    sextualOrientation: "transgender",
+    eyesColor: "black",
     height: "65cm",
-    "zip-code": "23434",
-    likenumber: 12,
-    usernumber: 10,
+    zipCode: "23434",
+    likeNumber: 12,
+    userNumber: 10,
     verified,
     color: "red",
     id: "1",
@@ -77,12 +79,14 @@ export const data = [
     },
     liveCon: "Live features is not available now.",
     storeCon: "store and mechadise is not available at the moment",
+    gmail: 'nsnsnsnsns@gmail.com',
+    phoneNumber: '',
+    status: "model",
   },
-
   {
     name: "Natalie john",
-    Image: img2,
-    "background-image": three,
+    image: img2,
+    backgroundImage: three,
     discription:
     "this I enjoy humiliating and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. is pracy and she is one of the best developer that i haveever met in my whole. Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers, Her Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. And I will do everything to pleasure Myself.",
   gender: "Female",
@@ -99,8 +103,8 @@ export const data = [
   },
   {
     name: "Sumar Gunt",
-    Image: img3,
-    "background-image": four,
+    image: img3,
+    backgroundImage: four,
     discription:
     "tHer Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. I enjoy humiliatinghis is pracy and she is one of the best developer that i haveever met in my whole. Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers,  and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. And I will do everything to pleasure Myself.",
   gender: "Female",
@@ -116,8 +120,8 @@ export const data = [
   },
   {
     name: "precious ",
-    Image: img4,
-    "background-image": five,
+    image: img4,
+    backgroundImage: five,
     discription:
     "Introducing Her Supreme Highness of Humilation, Princess of Paypigs, Exquisite Queen of Lo$ers, Her Merciless Beauty of Findom. I am the original Russian Brat. I'm a bitch and I'm a sweetheart. I'm maddingly unpredictable and intolerably selfish. I enjoy humiliating and manipulating the weak minds of worthless pigs to do and to pay for whatever My little cruel heart desires. Your pain and poverty is My pleasure. And I will do everything to pleasure Myself.",
   gender: "Female",
@@ -133,8 +137,8 @@ export const data = [
   },
   {
     name: "rouda rousey",
-    Image: img8,
-    "background-image": two,
+    image: img8,
+    backgroundImage: two,
     likenumber: 27,
     usernumber: 14,
     verified,
@@ -143,7 +147,7 @@ export const data = [
   },
   {
     name: "shaha ",
-    Image: img7,
+    image: img7,
     likenumber: 13,
     usernumber: 2,
     color: "white",
@@ -151,7 +155,7 @@ export const data = [
   },
   {
     name: "Kelly garret ",
-    Image: img9,
+    image: img9,
     likenumber: 4,
     usernumber: 5,
     verified,
@@ -160,7 +164,7 @@ export const data = [
   },
   {
     name: "Rita omasuin",
-    Image: img10,
+    image: img10,
     likenumber: 6,
     usernumber: 17,
     verified,
@@ -169,7 +173,7 @@ export const data = [
   },
   {
     name: "bright nikey",
-    Image: img11,
+    image: img11,
     likenumber: 14,
     usernumber: 59,
     color: "white",
@@ -177,7 +181,7 @@ export const data = [
   },
   {
     name: "name james",
-    Image: img12,
+    image: img12,
     likenumber: 12,
     usernumber: 10,
     verified,
@@ -186,7 +190,7 @@ export const data = [
   },
   {
     name: "pracy Bose",
-    Image: img13,
+    image: img13,
     likenumber: 12,
     usernumber: 1,
     verified,
@@ -195,7 +199,7 @@ export const data = [
   },
   {
     name: "bright Natalie d ",
-    Image: img14,
+    image: img14,
     likenumber: 21,
     usernumber: 16,
     verified,
@@ -204,7 +208,7 @@ export const data = [
   },
   {
     name: "sugar me",
-    Image: img15,
+    image: img15,
     likenumber: 24,
     usernumber: 61,
     color: "white",
@@ -212,7 +216,7 @@ export const data = [
   },
   {
     name: "precious prec",
-    Image: img16,
+    image: img16,
     likenumber: 8,
     usernumber: 6,
     color: "white",
@@ -220,7 +224,7 @@ export const data = [
   },
   {
     name: "rouda special ",
-    Image: one,
+    image: one,
     likenumber: 7,
     usernumber: 1,
     verified,
@@ -229,7 +233,7 @@ export const data = [
   },
   {
     name: "come andlick",
-    Image: img18,
+    image: img18,
     likenumber: 3,
     usernumber: 21,
     color: "white",
@@ -237,7 +241,7 @@ export const data = [
   },
   {
     name: "carrimedego ",
-    Image: img19,
+    image: img19,
     likenumber: 41,
     usernumber: 15,
     verified,
@@ -246,7 +250,7 @@ export const data = [
   },
   {
     name: "i am maphoor",
-    Image: img20,
+    image: img20,
     likenumber: 6,
     usernumber: 7,
     verified,
@@ -255,7 +259,7 @@ export const data = [
   },
   {
     name: "bri honey",
-    Image: img21,
+    image: img21,
     likenumber: 4,
     usernumber: 9,
     color: "white",
@@ -263,7 +267,7 @@ export const data = [
   },
   {
     name: "sarah ",
-    Image: img22,
+    image: img22,
     likenumber: 22,
     usernumber: 19,
     verified,
@@ -272,7 +276,7 @@ export const data = [
   },
   {
     name: "testing ",
-    Image: img23,
+    image: img23,
     likenumber: 11,
     usernumber: 56,
     verified,
@@ -285,3 +289,5 @@ export const data = [
     },
   },
 ];
+
+export const data2 = 
