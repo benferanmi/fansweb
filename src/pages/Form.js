@@ -51,11 +51,11 @@ const ModelForm = () => {
     const detailsRequired = user.discription && user.email && user.zipCode && user.phoneNumber
 
     if (detailsRequired) {
-        // const previousInfo = localStorage.getItem('models')
-        // const resInfo = JSON.parse(previousInfo)
-        // const updatedInfo = {...user, ...resInfo}
+        const previousInfo = localStorage.getItem('models')
+        const resInfo = JSON.parse(previousInfo)
+        const updatedInfo = {...user, ...resInfo}
 
-        // localStorage.setItem('models', JSON.stringify(updatedInfo))
+        localStorage.setItem('models', JSON.stringify(updatedInfo))
         console.log('details is true')
         addInfo()
 

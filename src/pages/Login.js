@@ -7,7 +7,7 @@ import "../css/login.css";
 import axios from 'axios'
 
 const Login = () => {
-  const [user, setUser] = useState({ userName: "", password: "" });
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
@@ -23,25 +23,29 @@ const Login = () => {
     const API_URL = "https://xfansbend.herokuapp.com/api/users/";
 
     const login = async () => {
-      const response = await axios.post(API_URL + "login", data);
+      const response = await axios.post(API_URL + "login", user);
       if (response.data) {
         localStorage.setItem("ldata", JSON.stringify(response.data));
       }
       return response.data;
     };
 
-    const data = JSON.parse(localStorage.getItem("isrealfans"));
-    console.log(data.username);
-    if (data.username !== user.userName && data.password !== user.password) {
-      console.log("details is not correct");
-      window.alert("The details you input is not correct. Kindly input your username and password again...")
-    } else {
-      console.log("details is correct");
+    login()
+    navigate("/")
 
-      // navigate("/");
-      window.alert("login sucessful");
-      localStorage.setItem("signup", true);
-    }
+    // const data = JSON.parse(localStorage.getItem("isrealfans"));
+    // console.log(data.email);
+    // if (data.email !== user.email && data.password !== user.password) {
+    //   console.log("details is not correct");
+    //   window.alert("The details you input is not correct. Kindly input your email and password again...")
+    // } else {
+    //   console.log("details is correct");
+
+    //   // navigate("/");
+    //   window.alert("login sucessful");
+    //   login()
+    //   localStorage.setItem("signup", true);
+    // }
   };
   return (
     <>
@@ -60,12 +64,12 @@ const Login = () => {
 
           <form>
             <input
-              type="text"
-              name="userName"
-              id="userName"
-              placeholder="Enter your Username"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
               onChange={handleSignUp}
-              value={user.userName}
+              value={user.email}
               required
             />
 
