@@ -4,10 +4,11 @@ import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import banner from "../image/model/twe.jpg";
 import "../css/signup.css";
+import axios from "axios";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [info, setUserInfo] = useState("please enter your details");
+  const [info] = useState("please enter your details");
   const [userType] = useState(["", "model", "user"])
   //mapping around the usertype array ----->>>>> selecting
   const AddUserType = userType.map(Add => Add)
@@ -17,11 +18,12 @@ const Signup = () => {
     let userT = userType[e.target.value]
 
     //pushing gender option to the main user array.
-    setUser({...user, client: userT})
+    setUser({...user, status: userT})
   }
 
 
   const [user, setUser] = useState({
+    id: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -29,7 +31,7 @@ const Signup = () => {
     password: "",
     passwordmatch: "",
     displayName: "",
-    client: "",
+    status: "",
   });
 
   const handleSignUp = (e) => {
@@ -42,6 +44,17 @@ const Signup = () => {
     (e) => {
       e.preventDefault();
 
+      const API_URL = "https://xfansbend.herokuapp.com/api/users";
+
+      const register = async () => {
+        const response = await axios.post(API_URL, user);
+        if (response.data) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+          console.log("res is true")
+        }
+        return response.data;
+      };
+
       const detailsRequired =
         user.password &&
         user.email &&
@@ -49,13 +62,10 @@ const Signup = () => {
         user.lastName &&
         user.passwordmatch &&
         user.userName &&
-        user.client;
+        user.status;
       //navigating user to login page.......
-      if (detailsRequired && user.password === user.passwordmatch && user.client === 'user') {
-        localStorage.setItem("user", JSON.stringify(user));
-
-        localStorage.setItem("autenticated", true);
-        localStorage.setItem("signup", true);
+      if (detailsRequired && user.password === user.passwordmatch && user.status === 'user') {
+        register()
         navigate("/login");
 
         setUser({
@@ -67,9 +77,9 @@ const Signup = () => {
         });
       } 
       //navigating models to additional content 
-      else if (detailsRequired && user.password === user.passwordmatch && user.client === 'model') {
-        localStorage.setItem("models", JSON.stringify(user))
-
+      else if (detailsRequired && user.password === user.passwordmatch && user.status === 'model') {
+       
+        register()
         navigate("/modelRegistration")
       }
       else {
@@ -165,8 +175,8 @@ const Signup = () => {
                 value={user.passwordmatch}
               />
             </div>
-            <label htmlFor="client-type">What are you reqistering for? </label>
-            <select onChange={e => handleUserType(e)}  name="client" id="client-type" className="signup-select">
+            <label htmlFor="status-type">What are you reqistering for? </label>
+            <select onChange={e => handleUserType(e)}  name="status" id="status-type" className="signup-select">
             {
                     AddUserType.map((address, key) => <option value={key} >{address} </option>)
                 }

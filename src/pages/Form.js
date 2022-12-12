@@ -1,9 +1,9 @@
+import axios from "axios";
 import React, { useState } from "react";
 import "../css/form.css";
 
 const ModelForm = () => {
   const [user, setUser] = useState({
-    id: "",
     email: "",
     discription: " ",
     weight: "",
@@ -36,16 +36,28 @@ const ModelForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const addInfo = async () => {
+      
+      const API_URL = "https://xfansbend.herokuapp.com/api/users/update/:id";
+      const response = await axios.put(API_URL, user);
+    
+      if (response.data) {
+        localStorage.setItem("userdata", JSON.stringify(response.data));
+      }
+      return response.data;
+    };
+
     const detailsRequired = user.discription && user.email && user.zipCode && user.phoneNumber
-    var uniq = 'id' + (new Date()).getTime();
-    console.log(uniq)
 
     if (detailsRequired) {
-        const previousInfo = localStorage.getItem('models')
-        const resInfo = JSON.parse(previousInfo)
-        const updatedInfo = {...user, ...resInfo}
+        // const previousInfo = localStorage.getItem('models')
+        // const resInfo = JSON.parse(previousInfo)
+        // const updatedInfo = {...user, ...resInfo}
 
-        localStorage.setItem('models', JSON.stringify(updatedInfo))
+        // localStorage.setItem('models', JSON.stringify(updatedInfo))
+        console.log('details is true')
+        addInfo()
 
     }
     else if (!user.discription) (

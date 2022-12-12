@@ -4,6 +4,7 @@ import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import banner from "../image/model/twe.jpg";
 import "../css/login.css";
+import axios from 'axios'
 
 const Login = () => {
   const [user, setUser] = useState({ userName: "", password: "" });
@@ -19,6 +20,15 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const API_URL = "https://xfansbend.herokuapp.com/api/users/";
+
+    const login = async () => {
+      const response = await axios.post(API_URL + "login", data);
+      if (response.data) {
+        localStorage.setItem("ldata", JSON.stringify(response.data));
+      }
+      return response.data;
+    };
 
     const data = JSON.parse(localStorage.getItem("isrealfans"));
     console.log(data.username);
@@ -28,7 +38,7 @@ const Login = () => {
     } else {
       console.log("details is correct");
 
-      navigate("/");
+      // navigate("/");
       window.alert("login sucessful");
       localStorage.setItem("signup", true);
     }

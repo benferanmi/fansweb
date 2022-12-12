@@ -9,6 +9,7 @@ import Models from "./Models/Models";
 import Signup from "./pages/Signup";
 import ModelForm from "./pages/Form";
 import ProfilePage from "./pages/ProfilePage";
+import DataFetch from "./DataFetch";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/models/:productId" element={<ModelDetails />}></Route>
         <Route path="modelRegistration" element={<ModelForm />}></Route>
         <Route path="profile" element={<ProfilePage />}></Route>
+        <Route path="data2" element={<DataFetch />}></Route>
       </Routes>
     </>
   );
