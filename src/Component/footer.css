@@ -41,12 +41,19 @@
 
   @media screen and (max-width: 500px) {
     .footer-links {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding-left: 10px;
+      padding-right: 10px;
+      grid-gap: 10px;
       gap: 10px;
     }
     .footer-links p {
       margin: 0px;
+      font-size: 14px;
+    }
+    .footer-links p a {
+      font-size: 14px;
     }
     .footer-text {
       font-size: 14px;

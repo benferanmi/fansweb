@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import banner from "../image/model/twe.jpg";
@@ -117,7 +117,7 @@ const FanSignUp = () => {
                 type="text"
                 name="firstName"
                 id="firstName"
-                placeholder="firstname"
+                placeholder="First Name"
                 onChange={handleSignUp}
                 value={user.firstName}
               />
@@ -125,7 +125,7 @@ const FanSignUp = () => {
                 type="text"
                 name="lastName"
                 id="lastName"
-                placeholder="Lastname"
+                placeholder="Last Name"
                 onChange={handleSignUp}
                 value={user.lastName}
               />
@@ -135,7 +135,7 @@ const FanSignUp = () => {
                 type="text"
                 name="displayName"
                 id="displayName"
-                placeholder="displayname"
+                placeholder="Display Name"
                 onChange={handleSignUp}
                 value={user.displayName}
                 autoComplete="off"
@@ -144,7 +144,7 @@ const FanSignUp = () => {
                 type="text"
                 name="userName"
                 id="userName"
-                placeholder="Username"
+                placeholder="User Name"
                 onChange={handleSignUp}
                 value={user.userName}
                 autoComplete="off"
@@ -161,12 +161,11 @@ const FanSignUp = () => {
             />
 
             <div className="form-flex"></div>
-            <div className="form-flex">
               <input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Enter your password"
+                placeholder="Password"
                 onChange={handleSignUp}
                 value={user.password}
                 required
@@ -175,10 +174,10 @@ const FanSignUp = () => {
                 type="password"
                 name="passwordmatch"
                 id="matchpassword"
+                placeholder="Confirm Password"
                 onChange={handleSignUp}
                 value={user.passwordmatch}
               />
-            </div>
             {/* <label htmlFor="status-type">What are you reqistering for? </label>
             <select onChange={e => handleUserType(e)}  name="status" id="status-type" className="signup-select">
             {
@@ -192,10 +191,10 @@ const FanSignUp = () => {
           </form>
           <div className="form-others">
             <p>
-              Already Have an account? <span> Log In.</span>
+              Already Have an account? <span> <Link to="/login">Log In.</Link></span>
             </p>
             <p>
-              Are you a Model, <span> Sign Up here</span>
+              Are you a Model, <span>  <Link to="/model-signup">Sign Up here</Link></span>
             </p>
           </div>
         </div>

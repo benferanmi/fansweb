@@ -113,13 +113,15 @@ header {
 
 .model-button {
   height: 50px;
-  width: 150px;
-  border-radius: 10px;
+  width: 300px;
+  padding: 10px 35px;
+  border-radius: 5px;
   outline: none;
-  border: 1px solid lightblue;
+  border: 3px solid lightblue;
   color: lightblue;
   background-color: white;
   font-size: 24px;
+  text-decoration: none;
 }
 
 .model-button:hover {

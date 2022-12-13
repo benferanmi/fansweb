@@ -49,7 +49,7 @@
 .signup-right form input {
     height: 50px;
     width: 100%;
-    padding-left: 20px;
+    padding-left: 10px;
     font-size: 18px ;
     color: black;
     outline: none;
@@ -103,10 +103,11 @@
     height: 20px;
     padding-left: 30px;
 }
-.form-others p span {
+.form-others p span a{
     color: lightblue;
     font-size: 20px;
     padding-left: 5px;
+    text-decoration: none;
 }
 
 .signup-head {
@@ -188,7 +189,7 @@
     height: auto;
     border-radius: 2px;
     background-color: blue;
-    color: black;
+    color: rgb(209, 209, 209);
     font-size: 20px;
     font-weight: 600;
 }
@@ -208,7 +209,8 @@
         gap: 10px !important;
     }
     .signup-left {
-        width: 100%;
+        width: 80%;
+        margin: auto;
         padding-bottom: 30px;
     }
     .signup-left img {
@@ -220,13 +222,31 @@
         display: flex;
         flex-direction: column;
     }
+    .head22h span {
+        font-size: 20px;
+    }
+    .fan-benefits h1 {
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+    .fan-benefits ul li {
+        font-size: 16px;
+    }
+    .fan-benefits button {
+        height: auto !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .signup-right form {
-        gap: 10px !important;
+        gap: 30px !important;
+        width: 90%;
+        margin: auto;
     }
     
     .signup-right form input {
         height: 40px;
-       
+       font-size: 16px;
+       border-radius: 5px;
     }
     .form-option {
         display: flex;
@@ -255,8 +275,9 @@
     
     .signup-right button {
         height: 40px;
-        width: 80%;
+        width: 100%;
         font-size: 20px;
+        border-radius: 5px;
         margin-top: 30px;
     }
     .form-others {
@@ -271,13 +292,14 @@
     }
     .form-others p {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: 20px;
         padding: 0 !important;
     }
-    .form-others p span {
+    .form-others p span a {
         color: lightblue;
         font-size: 14px !important;
         padding-left: 5px !important;
+        text-decoration: none;
     }
 }

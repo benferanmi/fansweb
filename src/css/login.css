@@ -130,7 +130,7 @@
         padding-top: 120px;
     }
     .login-left {
-        width: 100%;
+        width: 80%;
     }
     .login-left img {
         width: 100%;
@@ -140,7 +140,7 @@
     .login-right {
         display: flex;
         flex-direction: column;
-        
+        width: 90%;
     }
     
     .login-right form input {
@@ -152,7 +152,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 90%;
+        width: 98%;
     }
     
     .form-option label {
@@ -160,32 +160,40 @@
         flex-direction: row;
         
     }
-    
+    .form-option label .ttmms {
+        font-size: 12px;
+    }
     .form-option label input {
         width: 15px;
         height: 15px;
+        font-size: 16px;
     }
     
     .form-option p {
-        font-size: 18px;
+        font-size: 12px;
         font-weight: 500;
         color: lightblue;
+        display: block;
+        text-align: right;
     }
     
     .login-right button {
         height: 40px;
-        width: 80%;
+        width: 100%;
         font-size: 20px;
+        border-radius: 5px;
     }
     .form-others {
         font-size: 14px;
         text-align: center;
         display: flex !important;
         flex-direction: row;
+        width: 100%;
     }
     .form-others p {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        font-size: 12px;
         height: 20px;
     }
     .form-others p span {
