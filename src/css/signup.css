@@ -132,6 +132,66 @@
     outline: none;
     border: 1px solid gray;
 }
+
+.head22h {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+}
+
+.head22h span {
+        background-color: transparent;
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    transition: all .3s ease-in-out;
+    font-family: Merriweather Sans Bold;
+    cursor: pointer;
+}
+
+.span-active {
+        color: blue;
+    border-bottom: 3px solid blue;
+}
+
+.benefits {
+    padding-left: 70px;
+}
+.fan-benefits h1 {
+    display: block;
+    text-align: left;
+        font-size: 1.8em;
+    font-weight: 800;
+    font-family: Merriweather Sans Bold;
+    color: black;
+}
+
+.fan-benefits ul {
+    padding-left: 20px;
+}
+
+.fan-benefits ul li {
+    padding: 8px;
+    font-size: 20px;
+}
+
+.fan-benefits button {
+    width: fit-content !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
+    border-radius: 2px;
+    background-color: blue;
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+}
 @media screen and (max-width: 500px)  {
     .signup {
         width: 100%;

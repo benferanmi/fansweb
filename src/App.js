@@ -6,10 +6,11 @@ import Login from "./pages/Login";
 import Privacy from "./pages/Privacy";
 import ModelDetails from "./Models/ModelDetails";
 import Models from "./Models/Models";
-import Signup from "./pages/Signup";
+import FanSignup from "./pages/FanSignup";
 import ModelForm from "./pages/Form";
 import ProfilePage from "./pages/ProfilePage";
-import DataFetch from "./DataFetch";
+import Register from "./pages/Register";
+import ModelSignUp from "./pages/ModelSiginUp";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path='user' element={ <User />} /> */}
-        <Route path="signup" element={<Signup />} />
+        <Route path="fan-signup" element={<FanSignup />} />
+        <Route path="model-signup" element={<ModelSignUp />} />
         <Route path="login" element={<Login />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
@@ -25,7 +27,7 @@ function App() {
         <Route path="/models/:productId" element={<ModelDetails />}></Route>
         <Route path="modelRegistration" element={<ModelForm />}></Route>
         <Route path="profile" element={<ProfilePage />}></Route>
-        <Route path="data2" element={<DataFetch />}></Route>
+        <Route path="register" element={<Register />}></Route>
       </Routes>
     </>
   );

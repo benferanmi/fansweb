@@ -58,7 +58,8 @@
 
 .model-box {
   height: 350px;
-  width: 270px;
+  width: 78%;
+  margin: auto;
   margin-top: 20px;
   border-radius: 5px;
   background-color: lightblue;
@@ -76,6 +77,7 @@
   font-size: 18px;
   border-radius: 10px;
   width: 200px;
+  margin-top: 50px;
 }
 .model-button-two a {
   font-size: 16px;

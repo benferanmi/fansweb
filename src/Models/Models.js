@@ -24,7 +24,7 @@ const Models = () => {
         return (
           <div className="model-box" key={users.id}>
              <Link to={`/models/${users.id}`}>
-             <img src={users.Image} alt="" />
+             <img src={users.image} alt="" />
              </Link>
             <p className="modelname">
               <span>{users.name}</span>

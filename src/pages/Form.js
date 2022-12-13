@@ -1,10 +1,9 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useState } from "react";
 import "../css/form.css";
 
 const ModelForm = () => {
   const [user, setUser] = useState({
-    email: "",
     discription: " ",
     weight: "",
     height: "",
@@ -12,13 +11,17 @@ const ModelForm = () => {
     eyesColor: "",
     sextualOrientation: "",
     zipCode: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    ethnicity: "",
+    city: '',
   });
-  const [addgender] = useState(["female", "male"])
+  const [addgender] = useState(["", "female", "male"])
+  const [addEthnicity] = useState(["", "American Indian", "Alaska Native", "Black", "Africa American", "Hispanic or Latino", "Native Hawaiian or Other Pacific Islander", "White"])
 
   //this is the state for the combined userdats for models
   
   const Add = addgender.map(Add => Add)
+  const AddEthnicity = addEthnicity.map(Add => Add)
 
   const handleModelSubmit = (e) => {
     const name = e.target.name;
@@ -29,43 +32,27 @@ const ModelForm = () => {
     //handling gender select option. 
   const handleGenderSubmit = (e) => {
     let newGender = addgender[e.target.value]
+    let newEthnicity = addEthnicity[e.target.value]
     //pushing gender option to the main user array.
-    setUser({...user, gender: newGender})
+    setUser({...user, gender: newGender, ethnicity: newEthnicity})
   }
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const addInfo = async () => {
-      
-      const API_URL = "https://xfansbend.herokuapp.com/api/users/update/:id";
-      const response = await axios.put(API_URL, user);
-    
-      if (response.data) {
-        localStorage.setItem("userdata", JSON.stringify(response.data));
-      }
-      return response.data;
-    };
-
-    const detailsRequired = user.discription && user.email && user.zipCode && user.phoneNumber
+    const detailsRequired = user.discription && user.zipCode && user.phoneNumber
 
     if (detailsRequired) {
-        const previousInfo = localStorage.getItem('models')
-        const resInfo = JSON.parse(previousInfo)
-        const updatedInfo = {...user, ...resInfo}
+        const previousInfo = JSON.parse(localStorage.getItem('modelDetails'))
+        const updatedInfo = {...user, ...previousInfo}
 
         localStorage.setItem('models', JSON.stringify(updatedInfo))
         console.log('details is true')
-        addInfo()
-
     }
     else if (!user.discription) (
         console.log("enter your discription")
     ) 
-    else if (!user.email) {
-        console.log("please enter your email")
-    }
     else if (!user.zipCode) {
         console.log("please enter your zipcode to continue")
     }
@@ -126,11 +113,30 @@ const ModelForm = () => {
               onChange={handleModelSubmit}
             />
           </label>
+          <label htmlFor="city">
+            City
+            <input
+            className="fwh2"
+              type="text"
+              id="city"
+              name="city"
+              value={user.city}
+              onChange={handleModelSubmit}
+            />
+          </label>
           <label htmlFor="gender">
             Gender
-            <select onChange={e => handleGenderSubmit(e)} className="fwh2">
+            <select onChange={e => handleGenderSubmit(e)} className="fwh2" id="gender">
                 {
                     Add.map((address, key) => <option value={key} >{address} </option>)
+                }
+            </select>
+          </label>
+          <label htmlFor="Ethnicity">
+          Ethnicity
+            <select onChange={e => handleGenderSubmit(e)} className="fwh2" id="Ethnicity">
+                {
+                    AddEthnicity.map((address, key) => <option value={key} >{address} </option>)
                 }
             </select>
           </label>
@@ -153,17 +159,6 @@ const ModelForm = () => {
               id="eye"
               name="eyesColor"
               value={user.eyesColor}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="email">
-            Email
-            <input
-            className="fwh1"
-              type="email"
-              id="email"
-              name="email"
-              value={user.email}
               onChange={handleModelSubmit}
             />
           </label>
