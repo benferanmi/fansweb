@@ -46,7 +46,7 @@ const Register = () => {
     }
 
     const [content, setContent] = useState(<FanContent />)
-    const [beneColor, setBeneColor] = useState()
+    const [beneColor, setBeneColor] = useState("span-active")
     const [beneColor2, setBeneColor2] = useState()
     const navigate = useNavigate();
 

@@ -4,7 +4,7 @@ import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import banner from "../image/model/twe.jpg";
 import "../css/signup.css";
-// import axios from "axios";
+import axios from "axios";
 
 const FanSignUp = () => {
   const navigate = useNavigate();
@@ -42,15 +42,15 @@ const FanSignUp = () => {
     (e) => {
       e.preventDefault();
 
-      // const API_URL = "https://xfansbend.herokuapp.com/api/users";
-      // const register = async () => {
-      //   const response = await axios.post(API_URL, user);
-      //   if (response.data) {
-      //     localStorage.setItem("user", JSON.stringify(response.data));
-      //     console.log("res is true")
-      //   }
-      //   return response.data;
-      // };
+      const API_URL = "https://xfansbend.herokuapp.com/api/clients";
+      const fanRegister = async () => {
+        const response = await axios.post(API_URL, user);
+        if (response.data) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+          console.log("res is true")
+        }
+        return response.data;
+      };
       
 
       const detailsRequired =
@@ -74,7 +74,8 @@ const FanSignUp = () => {
         window.alert("password does not match")
       } else if (detailsRequired && user.password === user.passwordmatch) {
         navigate("/login");
-        console.log(user.status)
+        fanRegister()
+        // console.log(user.status)
 
         setUser({
           firstName: "",
@@ -89,7 +90,7 @@ const FanSignUp = () => {
         window.alert(info);
       }
     },
-    [info, navigate, user.email, user.firstName, user.lastName, user.password, user.passwordmatch, user.status, user.userName]
+    [info, navigate, user]
   );
 
   return (

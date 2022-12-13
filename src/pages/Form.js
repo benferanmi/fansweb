@@ -1,10 +1,12 @@
 // import axios from "axios";
 import React, { useState } from "react";
 import "../css/form.css";
+import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const ModelForm = () => {
   const [user, setUser] = useState({
-    discription: " ",
+    description: " ",
     weight: "",
     height: "",
     gender: "",
@@ -13,15 +15,25 @@ const ModelForm = () => {
     zipCode: "",
     phoneNumber: "",
     ethnicity: "",
-    city: '',
+    city: "",
+    color: "",
   });
-  const [addgender] = useState(["", "female", "male"])
-  const [addEthnicity] = useState(["", "American Indian", "Alaska Native", "Black", "Africa American", "Hispanic or Latino", "Native Hawaiian or Other Pacific Islander", "White"])
+  const [addgender] = useState(["", "female", "male"]);
+  const [addEthnicity] = useState([
+    "",
+    "American Indian",
+    "Alaska Native",
+    "Black",
+    "Africa American",
+    "Hispanic or Latino",
+    "Native Hawaiian or Other Pacific Islander",
+    "White",
+  ]);
 
   //this is the state for the combined userdats for models
-  
-  const Add = addgender.map(Add => Add)
-  const AddEthnicity = addEthnicity.map(Add => Add)
+
+  const Add = addgender.map((Add) => Add);
+  const AddEthnicity = addEthnicity.map((Add) => Add);
 
   const handleModelSubmit = (e) => {
     const name = e.target.name;
@@ -29,61 +41,67 @@ const ModelForm = () => {
     setUser({ ...user, [name]: value });
   };
 
-    //handling gender select option. 
+  //handling gender select option.
   const handleGenderSubmit = (e) => {
-    let newGender = addgender[e.target.value]
-    let newEthnicity = addEthnicity[e.target.value]
+    let newGender = addgender[e.target.value];
+    let newEthnicity = addEthnicity[e.target.value];
     //pushing gender option to the main user array.
-    setUser({...user, gender: newGender, ethnicity: newEthnicity})
-  }
-
+    setUser({ ...user, gender: newGender, ethnicity: newEthnicity });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const detailsRequired = user.discription && user.zipCode && user.phoneNumber
+    const API_URL = "https://xfansbend.herokuapp.com/api/users";
+    const fanRegister = async (updatedInfo) => {
+      const response = await axios.post(API_URL, updatedInfo);
+      if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        console.log("res is true");
+      }
+      return response.data;
+    };
+
+    const detailsRequired =
+      user.description && user.zipCode && user.phoneNumber;
 
     if (detailsRequired) {
-        const previousInfo = JSON.parse(localStorage.getItem('modelDetails'))
-        const updatedInfo = {...user, ...previousInfo}
+      const previousInfo = JSON.parse(localStorage.getItem("modelDetails"));
+      const updatedInfo = { ...user, ...previousInfo };
+      fanRegister(updatedInfo);
 
-        localStorage.setItem('models', JSON.stringify(updatedInfo))
-        console.log('details is true')
-    }
-    else if (!user.discription) (
-        console.log("enter your discription")
-    ) 
+      // navigate("/")
+      localStorage.setItem("models", JSON.stringify(updatedInfo));
+      console.log("details is true");
+    } else if (!user.description) console.log("enter your description");
     else if (!user.zipCode) {
-        console.log("please enter your zipcode to continue")
+      console.log("please enter your zipcode to continue");
+    } else if (!user.phoneNumber) {
+      console.log("please enter your phone Number to proceed ");
+    } else {
+      console.log("kindly reload your webpage. Internet Error");
     }
-    else if (!user.phoneNumber) {
-        console.log("please enter your phone Number to proceed ")
-    } 
-    else {
-        console.log('kindly reload your webpage. Internet Error')
-    }
-  }
-
+  };
 
   return (
     <div className="form-mmv">
       <section className="model-form">
         <form>
           <label htmlFor="des">
-            Enter Short discription About yourself.
+            Enter Short description About yourself.
             <input
-            className="fwh1"
+              className="fwh1"
               type="text"
               id="des"
-              name="discription"
-              value={user.discription}
+              name="description"
+              value={user.description}
               onChange={handleModelSubmit}
             />
           </label>
           <label htmlFor="weight">
             weight
             <input
-            className="fwh2"
+              className="fwh2"
               type="number"
               id="weight"
               name="weight"
@@ -94,7 +112,7 @@ const ModelForm = () => {
           <label htmlFor="height">
             Height
             <input
-            className="fwh2"
+              className="fwh2"
               type="number"
               id="height"
               name="height"
@@ -105,7 +123,7 @@ const ModelForm = () => {
           <label htmlFor="zip">
             Zip Code
             <input
-            className="fwh2"
+              className="fwh2"
               type="number"
               id="zip"
               name="zipCode"
@@ -116,7 +134,7 @@ const ModelForm = () => {
           <label htmlFor="city">
             City
             <input
-            className="fwh2"
+              className="fwh2"
               type="text"
               id="city"
               name="city"
@@ -124,26 +142,46 @@ const ModelForm = () => {
               onChange={handleModelSubmit}
             />
           </label>
+          <label htmlFor="color">
+            color
+            <input
+              className="fwh2"
+              type="text"
+              id="color"
+              name="color"
+              value={user.color}
+              onChange={handleModelSubmit}
+            />
+          </label>
+         
           <label htmlFor="gender">
             Gender
-            <select onChange={e => handleGenderSubmit(e)} className="fwh2" id="gender">
-                {
-                    Add.map((address, key) => <option value={key} >{address} </option>)
-                }
+            <select
+              onChange={(e) => handleGenderSubmit(e)}
+              className="fwh2"
+              id="gender"
+            >
+              {Add.map((address, key) => (
+                <option value={key}>{address} </option>
+              ))}
             </select>
           </label>
           <label htmlFor="Ethnicity">
-          Ethnicity
-            <select onChange={e => handleGenderSubmit(e)} className="fwh2" id="Ethnicity">
-                {
-                    AddEthnicity.map((address, key) => <option value={key} >{address} </option>)
-                }
+            Ethnicity
+            <select
+              onChange={(e) => handleGenderSubmit(e)}
+              className="fwh2"
+              id="Ethnicity"
+            >
+              {AddEthnicity.map((address, key) => (
+                <option value={key}>{address} </option>
+              ))}
             </select>
           </label>
           <label htmlFor="sexore">
             Sextual Orientation
             <input
-            className="fwh2"
+              className="fwh2"
               type="text"
               id="sexore"
               name="sextualOrientation"
@@ -154,7 +192,7 @@ const ModelForm = () => {
           <label htmlFor="eye">
             Eyes Color
             <input
-            className="fwh2"
+              className="fwh2"
               type="text"
               id="eye"
               name="eyesColor"
@@ -165,7 +203,7 @@ const ModelForm = () => {
           <label htmlFor="tel">
             Phone Number
             <input
-            className="fwh1"
+              className="fwh1"
               type="tel"
               id="tel"
               name="phoneNumber"
@@ -174,7 +212,9 @@ const ModelForm = () => {
             />
           </label>
 
-          <button type="button" onClick={handleSubmit}>Submit</button>
+          <button type="button" onClick={handleSubmit}>
+            Submit
+          </button>
         </form>
       </section>
     </div>

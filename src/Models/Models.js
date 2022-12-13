@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { data } from "../data";
 import './model.css'
+import ModelReal from "./ModelReal";
 
 const Models = () => {
 
@@ -28,7 +29,7 @@ const Models = () => {
              </Link>
             <p className="modelname">
               <span>{users.name}</span>
-              <i>{users.verified}</i>
+              <i>{users.verified}</i> 
             </p>
             <i className="miconone">
               {" "}
@@ -54,6 +55,7 @@ const Models = () => {
         );
       })}
       </div>
+      <ModelReal />
       <div className="footer-space">
         
       </div>

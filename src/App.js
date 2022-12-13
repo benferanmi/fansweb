@@ -11,6 +11,7 @@ import ModelForm from "./pages/Form";
 import ProfilePage from "./pages/ProfilePage";
 import Register from "./pages/Register";
 import ModelSignUp from "./pages/ModelSiginUp";
+import SingleModel from "./Models/SingleModelReal";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="privacy" element={<Privacy />} />
         <Route exact path="/models" element={<Models />}></Route>
         <Route path="/models/:productId" element={<ModelDetails />}></Route>
+        <Route path="/model/:productId" element={<SingleModel />}></Route>
         <Route path="modelRegistration" element={<ModelForm />}></Route>
         <Route path="profile" element={<ProfilePage />}></Route>
         <Route path="register" element={<Register />}></Route>

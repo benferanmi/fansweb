@@ -6,19 +6,20 @@ import {
 } from "../Component/Svg";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
-import { data } from "../data";
 import "./modeldetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
 import Backtotop from "../Component/Backtotop";
 import ModelInfo from "./ModelInfo";
 
-function ModelDetails() {
+function SingleModel() {
   const { productId } = useParams();
-  const [userData, setUserData] = useState(data);
-  const [showAbout, setShowAbout] = useState(true);
 
-  const singleModel = userData.find((prod) => prod.id === productId);
+  const data = JSON.parse(localStorage.getItem("FetchedModelData"))
+//   const [userData, setUserData] = useState(data);
+  const [showAbout, setShowAbout] = useState(true);
+  console.log(data)
+  const singleModel = data.find((prod) => prod._id === productId);
 
 
   const AboutShowhandler = () => {
@@ -26,7 +27,7 @@ function ModelDetails() {
   };
 
   const AboutContent = () => {
-    return singleModel.discription;
+    return singleModel.description;
   };
 
 
@@ -112,4 +113,4 @@ function ModelDetails() {
   );
 }
 
-export default ModelDetails;
+export default SingleModel;
