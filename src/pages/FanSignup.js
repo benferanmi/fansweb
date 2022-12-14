@@ -47,6 +47,7 @@ const FanSignUp = () => {
         const response = await axios.post(API_URL, user);
         if (response.data) {
           localStorage.setItem("user", JSON.stringify(response.data));
+           navigate("/fan-login");
           console.log("res is true")
         }
         return response.data;
@@ -73,7 +74,6 @@ const FanSignUp = () => {
       } else if (user.password !== user.passwordmatch) {
         window.alert("password does not match")
       } else if (detailsRequired && user.password === user.passwordmatch) {
-        navigate("/login");
         fanRegister()
         // console.log(user.status)
 

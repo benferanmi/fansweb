@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import "../css/form.css";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ModelForm = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     description: " ",
     weight: "",
@@ -57,7 +58,12 @@ const ModelForm = () => {
       const response = await axios.post(API_URL, updatedInfo);
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("models", JSON.stringify(updatedInfo));
+          navigate("/model-login")
         console.log("res is true");
+      } else {
+        console.log(response)
+        console.log("sign up failed")
       }
       return response.data;
     };
@@ -69,9 +75,6 @@ const ModelForm = () => {
       const previousInfo = JSON.parse(localStorage.getItem("modelDetails"));
       const updatedInfo = { ...user, ...previousInfo };
       fanRegister(updatedInfo);
-
-      // navigate("/")
-      localStorage.setItem("models", JSON.stringify(updatedInfo));
       console.log("details is true");
     } else if (!user.description) console.log("enter your description");
     else if (!user.zipCode) {

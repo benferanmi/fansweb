@@ -6,7 +6,7 @@ import banner from "../image/model/twe.jpg";
 import "../css/login.css";
 import axios from 'axios'
 
-const Login = () => {
+const FanLogin = () => {
   const [user, setUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
@@ -20,18 +20,20 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const API_URL = "https://xfansbend.herokuapp.com/api/users/";
+    const API_URL = "https://xfansbend.herokuapp.com/api/clients/";
 
     const login = async () => {
       const response = await axios.post(API_URL + "login", user);
+      // console.log(response)
       if (response.data) {
-        localStorage.setItem("ldata", JSON.stringify(response.data));
+        localStorage.setItem("user", JSON.stringify(response.data));
+        navigate("/")
       }
-      return response.data;
+      console.log("login failed")
     };
 
     login()
-    navigate("/")
+    
 
     // const data = JSON.parse(localStorage.getItem("isrealfans"));
     // console.log(data.email);
@@ -110,4 +112,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default FanLogin;
