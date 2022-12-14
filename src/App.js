@@ -7,7 +7,6 @@ import ModelDetails from "./Models/ModelDetails";
 import Models from "./Models/Models";
 import FanSignup from "./pages/FanSignup";
 import ModelForm from "./pages/Form";
-import ProfilePage from "./pages/ProfilePage";
 import Register from "./pages/Register";
 import ModelSignUp from "./pages/ModelSiginUp";
 import SingleModel from "./Models/SingleModelReal";
@@ -31,9 +30,8 @@ function App() {
         <Route path="/models/:productId" element={<ModelDetails />}></Route>
         <Route path="/model/:productId" element={<SingleModel />}></Route>
         <Route path="modelRegistration" element={<ModelForm />}></Route>
-        <Route path="profile" element={<ProfilePage />}></Route>
         <Route path="register" element={<Register />}></Route>
-        <Route path="profile2" element={<ModelProfile />}></Route>
+        <Route path="profile" element={<ModelProfile />}></Route>
       </Routes>
     </>
   );

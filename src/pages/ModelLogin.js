@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import banner from "../image/model/twe.jpg";
@@ -58,7 +58,7 @@ const ModelLogin = () => {
         </div>
 
         <div className="login-right">
-          <h1>LOG IN</h1>
+          <h1>MODEL LOG IN</h1>
 
           <span>
             <hr /> * <hr />
@@ -98,8 +98,13 @@ const ModelLogin = () => {
           </form>
 
           <div className="form-others">
+          <p>
+              Don't have an account yet? <span><Link to="/register">Sign up here.</Link></span>
+            </p>
             <p>
-              Don't have an account yet? <span> Sign up here.</span>
+              are you a Model, <span>Login Here 
+            <Link to="/model-login">Log In.</Link>
+              </span>
             </p>
             <p>
               Email Verification, <span> Resend here.</span>
