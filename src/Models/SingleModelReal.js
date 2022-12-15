@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import {
-  MessageSvg,
-  ShareSvg,
-} from "../Component/Svg";
+import { MessageSvg, ShareSvg } from "../Component/Svg";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import "./modeldetails.css";
@@ -14,13 +11,12 @@ import ModelInfo from "./ModelInfo";
 
 function SingleModel() {
   const { productId } = useParams();
-
-  const data = JSON.parse(localStorage.getItem("FetchedModelData"))
-//   const [userData, setUserData] = useState(data);
+  const urlRef = useRef();
+  const data = JSON.parse(localStorage.getItem("FetchedModelData"));
+  //   const [userData, setUserData] = useState(data);
   const [showAbout, setShowAbout] = useState(true);
-  console.log(data)
+  console.log(data);
   const singleModel = data.find((prod) => prod._id === productId);
-
 
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
@@ -30,11 +26,24 @@ function SingleModel() {
     return singleModel.description;
   };
 
+  const shareProfileHandler = () => {
+    urlRef.current.select();
+    document.execCommand("copy");
+    window.alert("Link has been copied to clipboard!");
+  };
 
   return (
     <>
       <Header />
-      <div className="header-space"></div>
+      <div className="header-space">
+        {" "}
+        <input
+          type="text"
+          ref={urlRef}
+          value={window.location.href}
+          className="hidden"
+        />
+      </div>
       <div className="modeldetails">
         <div className="detailshead">
           <img
@@ -51,7 +60,7 @@ function SingleModel() {
             <p className="mainname">
               {singleModel.name} {singleModel.verified}
             </p>
-            <p className="name2">@ {singleModel.id}</p>
+            <p className="name2">@ {singleModel._id}</p>
           </div>
 
           <div className="details-head button">
@@ -101,8 +110,8 @@ function SingleModel() {
 
         {/* other contents */}
         <section className="details-model-info">
-          <div >
-            <ModelInfo singleModel={singleModel}/>
+          <div>
+            <ModelInfo singleModel={singleModel} />
           </div>
         </section>
       </div>

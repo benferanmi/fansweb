@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import {
-  MessageSvg,
-  ShareSvg,
-} from "../Component/Svg";
+import { MessageSvg, ShareSvg } from "../Component/Svg";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
 import { data } from "../data";
@@ -15,11 +12,11 @@ import ModelInfo from "./ModelInfo";
 
 function ModelDetails() {
   const { productId } = useParams();
+  const urlRef = useRef();
   const [userData, setUserData] = useState(data);
   const [showAbout, setShowAbout] = useState(true);
 
   const singleModel = userData.find((prod) => prod.id === productId);
-
 
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
@@ -29,11 +26,23 @@ function ModelDetails() {
     return singleModel.discription;
   };
 
+  const shareProfileHandler = () => {
+    urlRef.current.select();
+    document.execCommand("copy");
+    window.alert("Link has been copied to clipboard!");
+  };
 
   return (
     <>
       <Header />
-      <div className="header-space"></div>
+      <div className="header-space">
+        <input
+          type="text"
+          ref={urlRef}
+          value={window.location.href}
+          className="hidden"
+        />
+      </div>
       <div className="modeldetails">
         <div className="detailshead">
           <img
@@ -57,7 +66,11 @@ function ModelDetails() {
             <button type="button" className="pri-button">
               <span className="svg-space">{MessageSvg}</span> Message
             </button>
-            <button type="button" className="pri-button-2">
+            <button
+              type="button"
+              className="pri-button-2"
+              onClick={shareProfileHandler}
+            >
               <span className="svg-space">{ShareSvg}</span> Share Profile
             </button>
           </div>
@@ -100,8 +113,8 @@ function ModelDetails() {
 
         {/* other contents */}
         <section className="details-model-info">
-          <div >
-            <ModelInfo singleModel={singleModel}/>
+          <div>
+            <ModelInfo singleModel={singleModel} />
           </div>
         </section>
       </div>

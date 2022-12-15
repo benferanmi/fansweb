@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import "../css/form.css";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Footer from "../Component/Footer";
+import Header from "../Component/Header";
 
 const ModelForm = () => {
   const navigate = useNavigate();
@@ -59,11 +61,11 @@ const ModelForm = () => {
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
         localStorage.setItem("models", JSON.stringify(updatedInfo));
-          navigate("/model-login")
+        navigate("/model-login");
         console.log("res is true");
       } else {
-        console.log(response)
-        console.log("sign up failed")
+        console.log(response);
+        console.log("sign up failed");
       }
       return response.data;
     };
@@ -87,140 +89,147 @@ const ModelForm = () => {
   };
 
   return (
-    <div className="form-mmv">
-      <section className="model-form">
-        <form>
-          <label htmlFor="des">
-            Enter Short description About yourself.
-            <input
-              className="fwh1"
-              type="text"
-              id="des"
-              name="description"
-              value={user.description}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="weight">
-            weight
-            <input
-              className="fwh2"
-              type="number"
-              id="weight"
-              name="weight"
-              value={user.weight}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="height">
-            Height
-            <input
-              className="fwh2"
-              type="number"
-              id="height"
-              name="height"
-              value={user.height}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="zip">
-            Zip Code
-            <input
-              className="fwh2"
-              type="number"
-              id="zip"
-              name="zipCode"
-              value={user.zipCode}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="city">
-            City
-            <input
-              className="fwh2"
-              type="text"
-              id="city"
-              name="city"
-              value={user.city}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="color">
-            color
-            <input
-              className="fwh2"
-              type="text"
-              id="color"
-              name="color"
-              value={user.color}
-              onChange={handleModelSubmit}
-            />
-          </label>
-         
-          <label htmlFor="gender">
-            Gender
-            <select
-              onChange={(e) => handleGenderSubmit(e)}
-              className="fwh2"
-              id="gender"
-            >
-              {Add.map((address, key) => (
-                <option value={key}>{address} </option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="Ethnicity">
-            Ethnicity
-            <select
-              onChange={(e) => handleGenderSubmit(e)}
-              className="fwh2"
-              id="Ethnicity"
-            >
-              {AddEthnicity.map((address, key) => (
-                <option value={key}>{address} </option>
-              ))}
-            </select>
-          </label>
-          <label htmlFor="sexore">
-            Sextual Orientation
-            <input
-              className="fwh2"
-              type="text"
-              id="sexore"
-              name="sextualOrientation"
-              value={user.sextualOrientation}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="eye">
-            Eyes Color
-            <input
-              className="fwh2"
-              type="text"
-              id="eye"
-              name="eyesColor"
-              value={user.eyesColor}
-              onChange={handleModelSubmit}
-            />
-          </label>
-          <label htmlFor="tel">
-            Phone Number
-            <input
-              className="fwh1"
-              type="tel"
-              id="tel"
-              name="phoneNumber"
-              value={user.phoneNumber}
-              onChange={handleModelSubmit}
-            />
-          </label>
+    <>
+    <Header />
+      <div className="header-space"></div>
+      <div className="form-mmv">
+        <section className="model-form">
+          <form>
+            <label htmlFor="des">
+              Enter Short description About yourself.
+              <input
+                className="fwh1"
+                type="text"
+                id="des"
+                name="description"
+                value={user.description}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="weight">
+              weight
+              <input
+                className="fwh2"
+                type="number"
+                id="weight"
+                name="weight"
+                value={user.weight}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="height">
+              Height
+              <input
+                className="fwh2"
+                type="number"
+                id="height"
+                name="height"
+                value={user.height}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="zip">
+              Zip Code
+              <input
+                className="fwh1"
+                type="number"
+                id="zip"
+                name="zipCode"
+                value={user.zipCode}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="city">
+              City
+              <input
+                className="fwh1"
+                type="text"
+                id="city"
+                name="city"
+                value={user.city}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="color">
+              color
+              <input
+                className="fwh2"
+                type="text"
+                id="color"
+                name="color"
+                value={user.color}
+                onChange={handleModelSubmit}
+              />
+            </label>
 
-          <button type="button" onClick={handleSubmit}>
-            Submit
-          </button>
-        </form>
-      </section>
-    </div>
+            <label htmlFor="gender">
+              Gender
+              <select
+                onChange={(e) => handleGenderSubmit(e)}
+                className="fwh1"
+                id="gender"
+              >
+                {Add.map((address, key) => (
+                  <option value={key}>{address} </option>
+                ))}
+              </select>
+            </label>
+            <label htmlFor="Ethnicity">
+              Ethnicity
+              <select
+                onChange={(e) => handleGenderSubmit(e)}
+                className="fwh2"
+                id="Ethnicity"
+              >
+                {AddEthnicity.map((address, key) => (
+                  <option value={key}>{address} </option>
+                ))}
+              </select>
+            </label>
+            <label htmlFor="sexore">
+              Sextual Orientation
+              <input
+                className="fwh1"
+                type="text"
+                id="sexore"
+                name="sextualOrientation"
+                value={user.sextualOrientation}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="eye">
+              Eyes Color
+              <input
+                className="fwh2"
+                type="text"
+                id="eye"
+                name="eyesColor"
+                value={user.eyesColor}
+                onChange={handleModelSubmit}
+              />
+            </label>
+            <label htmlFor="tel">
+              Phone Number
+              <input
+                className="fwh1"
+                type="tel"
+                id="tel"y
+                name="phoneNumber"
+                value={user.phoneNumber}
+                onChange={handleModelSubmit}
+              />
+            </label>
+
+            <button type="button" onClick={handleSubmit}>
+              Submit
+            </button>
+          </form>
+        </section>
+      </div>
+
+      <div className="footer-space"></div>
+      <Footer />
+    </>
   );
 };
 
