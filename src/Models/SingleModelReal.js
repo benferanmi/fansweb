@@ -58,7 +58,7 @@ function SingleModel() {
         <section className="details-section-one">
           <div className="details-name">
             <p className="mainname">
-              {singleModel.name} {singleModel.verified}
+              {singleModel.displayName} {singleModel.verified}
             </p>
             <p className="name2">@ {singleModel._id}</p>
           </div>
@@ -67,7 +67,7 @@ function SingleModel() {
             <button type="button" className="pri-button">
               <span className="svg-space">{MessageSvg}</span> Message
             </button>
-            <button type="button" className="pri-button-2">
+            <button type="button" className="pri-button-2" onClick={shareProfileHandler}>
               <span className="svg-space">{ShareSvg}</span> Share Profile
             </button>
           </div>
