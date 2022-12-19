@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
@@ -8,12 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
 import { MessageSvg, ShareSvg } from "../Component/Svg";
 import ModelInfo from "./ModelInfo";
+// import {Buffer} from 'buffer'
 
 
 const ModelProfile = () => {
 
   const [profileImage, setProfileImage] = useState()
   const [showAbout, setShowAbout] = useState(true);
+    const [backgroundImage, setBackgroundImage] = useState(null);
 
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
@@ -27,7 +29,11 @@ const ModelProfile = () => {
   let userDetail = JSON.parse(localStorage.getItem("user"));
   const id = userDetail._id;
   const token = userDetail.token;
-  console.log(userDetail.description)
+   const bgimg = userDetail.backgroundImage
+   console.log(bgimg.data.data)
+
+       // Read the image file and convert it to a buffer
+
 
   const handleImageUpload = (event) => {
     event.preventDefault();
@@ -108,7 +114,7 @@ const ModelProfile = () => {
         <button type="submit"> Update Background Image</button>
       </form>
       </div>
-      <img src="" alt="" />
+      <img src="" alt="my background imgge" />
     </div>
     {/* section for profile image update view and update buttons starts  */}
     <div className="profile-p-image">

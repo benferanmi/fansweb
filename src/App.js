@@ -13,6 +13,7 @@ import SingleModel from "./Models/SingleModelReal";
 import ModelProfile from "./Models/ModelProfile";
 import ModelLogin from "./pages/ModelLogin";
 import FanLogin from "./pages/FanLogin";
+import Useless from "./Models/Useless";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="modelRegistration" element={<ModelForm />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="profile" element={<ModelProfile />}></Route>
+        <Route path="buffer" element={<Useless />}></Route>
       </Routes>
     </>
   );
