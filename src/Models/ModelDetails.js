@@ -105,6 +105,9 @@ function ModelDetails() {
             <p>Zip-Code: {singleModel.zipCode}</p>
           </div>
         </section>
+        <div className="sub-button">
+          <button type="button">Subcribe</button>
+        </div>
 
         <section className="details-button">
           <button type="button">Monthly Subscription | $9.99</button>

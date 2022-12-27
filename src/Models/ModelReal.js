@@ -25,8 +25,8 @@ const ModelReal = () => {
           });
       }, []);
     
-      console.log(data)
-      localStorage.setItem('FetchedModelData', JSON.stringify(data))
+      // console.log(data)
+      // localStorage.setItem('FetchedModelData', JSON.stringify(data))
     //   console.log(data[0])
       
   return (

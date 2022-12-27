@@ -154,7 +154,15 @@
   padding-top: 150px;
   background-color: lightblue;
 }
-
+.sub-button button {
+  outline: none;
+  border: none;
+  font-size: 24px;
+  color: black;
+  background-color: blue;
+  height: 50px;
+  width: 180px;
+}
 @media screen and (max-width: 500px)  { 
   .detailshead .bgimg {
     height: 100px;

@@ -6,8 +6,7 @@ import five from "./image/model/five.jpg";
 import six from "./image/model/six.jpg";
 
 export const fileData = [
-    {   backgroundImage: six,
-        image: five,
+    { 
         images: {
             imgOne: one,
             imgTwo: two,
