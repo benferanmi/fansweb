@@ -35,6 +35,11 @@ header {
   font-weight: 700;
   color: black;
 }
+
+.header-left a img {
+  width: 200px;
+  height: 60px;
+}
 .header-right button {
   height: 50px ;
   background-color: inherit ;

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
 import { MessageSvg, ShareSvg } from "../Component/Svg";
 import ModelInfo from "./ModelInfo";
+import withAuth from "../auth/LoginUseruth";
+
 // import {Buffer} from 'buffer'
 
 const ModelProfile = () => {
@@ -224,4 +226,4 @@ const ModelProfile = () => {
   );
 };
 
-export default ModelProfile;
+export default withAuth(ModelProfile);
