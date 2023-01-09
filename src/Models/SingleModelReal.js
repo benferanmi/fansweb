@@ -1,29 +1,78 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MessageSvg, ShareSvg } from "../Component/Svg";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
-import "./modeldetails.css";
+import { MessageSvg, ShareSvg } from "../pages/Component/Svg";
+import Footer from "../pages/Component/Footer";
+import Header from "../pages/Component/Header";
+import "./css/modeldetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
-import Backtotop from "../Component/Backtotop";
+import Backtotop from "../pages/Component/Backtotop";
 import ModelInfo from "./ModelInfo";
+import axios from "axios";
 
 function SingleModel() {
   const { productId } = useParams();
   const urlRef = useRef();
-  const data = JSON.parse(localStorage.getItem("FetchedModelData"));
-  //   const [userData, setUserData] = useState(data);
+  const [data, setData] = useState(null);
   const [showAbout, setShowAbout] = useState(true);
-  console.log(data);
-  const singleModel = data.find((prod) => prod._id === productId);
+  const [singleModel, setSingleModel] = useState([]);
+
+  //fetching all user data from the database.
+  useEffect(() => {
+    axios
+      .get("https://xfansbend.herokuapp.com/api/users/all")
+      .then((response) => {
+        setData(response.data);
+        setSingleModel(response.data.find((prod) => prod._id === productId));
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [productId]);
+  // console.log(data);
+  // console.log(singleModel.userName);
+  const {
+    // backgroundImage,
+    city,
+    country,
+    createdAt,
+    description,
+    ethnicity,
+    eyesColor,
+    firstName,
+    gender,
+    height,
+    // image,
+    lastName,
+    phoneNumber,
+    sextualOrientation,
+    updatedAt,
+    weight,
+    zipCode,
+    _id,
+    // displayName,
+    // email,
+    // color,
+    // userName,
+  } = singleModel;
+
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
 
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
   };
 
   const AboutContent = () => {
-    return singleModel.description;
+    return description;
   };
 
   const shareProfileHandler = () => {
@@ -47,27 +96,37 @@ function SingleModel() {
       <div className="modeldetails">
         <div className="detailshead">
           <img
-            src={singleModel.backgroundImage}
-            alt={`${singleModel.name} background`}
+            // src={"data:image/jpeg;base64," + arrayBufferToBase64(backgroundImage.data.data)}
+            alt={`${lastName} background`}
             className="bgimg"
           />
           <div className="profileimg">
-            <img alt="Avatar" src={singleModel.image} className="avatar" />
+            <img
+              alt="Avatar"
+              // src={singleModel.image}
+              // src={
+              //   "data:image/jpeg;base64," + arrayBufferToBase64(image.data.data)
+              // }
+              className="avatar"
+            />
           </div>
         </div>
         <section className="details-section-one">
           <div className="details-name">
-            <p className="mainname">
-              {singleModel.displayName} {singleModel.verified}
-            </p>
-            <p className="name2">@ {singleModel._id}</p>
+            <p className="mainname">{firstName + " " + lastName}</p>
+            <p className="name2">@ {_id}</p>
+            <p>Tel- {phoneNumber}</p>
           </div>
 
           <div className="details-head button">
             <button type="button" className="pri-button">
               <span className="svg-space">{MessageSvg}</span> Message
             </button>
-            <button type="button" className="pri-button-2" onClick={shareProfileHandler}>
+            <button
+              type="button"
+              className="pri-button-2"
+              onClick={shareProfileHandler}
+            >
               <span className="svg-space">{ShareSvg}</span> Share Profile
             </button>
           </div>
@@ -90,16 +149,24 @@ function SingleModel() {
 
         <section className="details-spec">
           <div className="spec-1">
-            <p>Gender: {singleModel.gender}</p>
-            <p>Weight: {singleModel.weight}</p>
+            <p>Gender: {gender}</p>
+            <p>Weight: {weight}</p>
+            <p>City: {city}</p>
+            <p>Country: {country}</p>
           </div>
           <div className="spec-2">
-            <p>Sexual orientation: {singleModel.sextualOrientation}</p>
-            <p>Eye Color: {singleModel.eyesColor}</p>
+            <p>Sexual orientation: {sextualOrientation}</p>
+            <p>Eye Color: {eyesColor}</p>
+            <p>Ethnicity {ethnicity}</p>
           </div>
           <div className="spec-3">
-            <p>Height: {singleModel.height}</p>
-            <p>Zip-Code: {singleModel.zipCode}</p>
+            <p>
+              Height:
+              {height}
+            </p>
+            <p>Zip-Code: {zipCode}</p>
+            <p>Account Creation Date: {createdAt}</p>
+            <p>Last Update By You: {updatedAt}</p>
           </div>
         </section>
 

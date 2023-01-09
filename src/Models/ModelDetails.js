@@ -1,13 +1,13 @@
 import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { MessageSvg, ShareSvg } from "../Component/Svg";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
+import { MessageSvg, ShareSvg } from "../pages/Component/Svg";
+import Footer from "../pages/Component/Footer";
+import Header from "../pages/Component/Header";
 import { data } from "../data";
-import "./modeldetails.css";
+import "./css/modeldetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
-import Backtotop from "../Component/Backtotop";
+import Backtotop from "../pages/Component/Backtotop";
 import ModelInfo from "./ModelInfo";
 
 function ModelDetails() {

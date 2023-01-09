@@ -3,10 +3,10 @@ import bannerImg1 from "../image/bannerone.png";
 import bannerImg2 from '../image/bannertwo.png';
 import bannerImg3 from '../image/bannerthree.png';
 import { Link } from "react-router-dom";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
+import Footer from "./Component/Footer";
+import Header from "./Component/Header";
 import ImageSlider, { Slide } from "react-auto-image-slider";
-import Backtotop from "../Component/Backtotop";
+import Backtotop from "./Component/Backtotop";
 import Models from "../Models/Models.js"
 
 

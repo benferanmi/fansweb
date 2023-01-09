@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../App.css'
-import logo from '../image/logo.JPG'
-import sublogo from '../image/logo2.png'
+import '../../App.css'
+import logo from '../../image/logo.JPG'
+import sublogo from '../../image/logo2.png'
 
-import '../App.css'
 const Header = () => {
   return (
     <div>

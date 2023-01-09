@@ -2,38 +2,43 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
-import banner from "../image/model/twe.jpg";
-import "../css/login.css";
-import axios from 'axios'
+import banner from "../../image/model/twe.jpg";
+import "./css/login.css";
+import axios from "axios";
 
-const FanLogin = () => {
+export const ModelLogin = () => {
   const [user, setUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
 
+  localStorage.setItem("isLoggedIn", "gh67Pisx678ilhe89054Ikd4mUi80P1wJu5");
   const handleSignUp = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-
     setUser({ ...user, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const API_URL = "https://xfansbend.herokuapp.com/api/clients/";
+    const API_URL = "https://xfansbend.herokuapp.com/api/users/";
 
     const login = async () => {
       const response = await axios.post(API_URL + "login", user);
       // console.log(response)
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
-        navigate("/")
+        localStorage.setItem(
+          "isLoggedIn",
+          "52DF12dh875po96m3a10loo0sils0qoa1ej5hs853uom74a58w4meYf45hgi2sl"
+        );
+
+        navigate("/");
+      } else {
+        console.log("login failed");
       }
-      console.log("login failed")
     };
 
-    login()
-    
+    login();
 
     // const data = JSON.parse(localStorage.getItem("isrealfans"));
     // console.log(data.email);
@@ -58,7 +63,7 @@ const FanLogin = () => {
         </div>
 
         <div className="login-right">
-          <h1>FAN LOG IN</h1>
+          <h1>MODEL LOG IN</h1>
 
           <span>
             <hr /> * <hr />
@@ -86,7 +91,8 @@ const FanLogin = () => {
             />
             <div className="form-option">
               <label htmlFor="remember">
-                <input type="checkbox" name="remember" /> <div className="ttmms">Remember me</div>
+                <input type="checkbox" name="remember" />{" "}
+                <div className="ttmms">Remember me</div>
               </label>
 
               <p>Forget Password?</p>
@@ -99,8 +105,16 @@ const FanLogin = () => {
 
           <div className="form-others">
             <p>
-              Don't have an account yet? <span>
-            <Link to="/register"> Sign up here.</Link>
+              Don't have an account yet?{" "}
+              <span>
+                <Link to="/register">Sign up here.</Link>
+              </span>
+            </p>
+            <p>
+              are you a Model,{" "}
+              <span>
+                Login Here
+                <Link to="/model-login">Log In.</Link>
               </span>
             </p>
             <p>
@@ -113,5 +127,3 @@ const FanLogin = () => {
     </>
   );
 };
-
-export default FanLogin;

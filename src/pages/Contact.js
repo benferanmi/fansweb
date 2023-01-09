@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
+import Footer from "./Component/Footer";
+import Header from "./Component/Header";
 import "../css/contact.css";
 import emailjs from '@emailjs/browser';
 

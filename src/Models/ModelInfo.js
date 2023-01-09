@@ -5,7 +5,7 @@ import {
   MechadiseSvg,
   PremiumSvg,
   VideoSvg,
-} from "../Component/Svg";
+} from "../pages/Component/Svg";
 
 const ModelInfo = (singleModel) => {
   const [showVideoContent, setShowVideoContent] = useState(false);

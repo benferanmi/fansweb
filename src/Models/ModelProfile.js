@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
-import "./profile.css";
-import "./modeldetails.css";
+import Footer from "../pages/Component/Footer";
+import Header from "../pages/Component/Header";
+import "./css/profile.css";
+import "./css/modeldetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
-import { MessageSvg, ShareSvg } from "../Component/Svg";
+import { MessageSvg, ShareSvg } from "../pages/Component/Svg";
 import ModelInfo from "./ModelInfo";
-import withAuth from "../auth/LoginUseruth";
-
-// import {Buffer} from 'buffer'
+import { withAuth } from "../auth/LoginUseruth";
 
 const ModelProfile = () => {
   const [showAbout, setShowAbout] = useState(true);
-
   //hide and show content handler
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
@@ -28,8 +25,8 @@ const ModelProfile = () => {
   let userDetail = JSON.parse(localStorage.getItem("user"));
   const id = userDetail._id;
   const token = userDetail.token;
-  const backgroundImage = userDetail.backgroundImage;
-  const profileImage = userDetail.profileImage;
+  // const backgroundImage = userDetail.backgroundImage;
+  // const profileImage = userDetail.profileImage;
 
   //uploading the background image to database.
   const handleImageUpload = (event) => {
@@ -124,10 +121,10 @@ const ModelProfile = () => {
             </form>
           </div>
           <img
-            src={
-              "data:image/jpeg;base64," +
-              arrayBufferToBase64(backgroundImage.data.data)
-            }
+            // src={
+            //   "data:image/jpeg;base64," +
+            //   arrayBufferToBase64(backgroundImage.data.data)
+            // }
             className="background-image"
             alt="this is the imageeee that back"
           />
@@ -142,10 +139,10 @@ const ModelProfile = () => {
             </form>
           </div>
           <img
-            src={
-              "data:image/jpeg;base64," +
-              arrayBufferToBase64(profileImage.data.data)
-            }
+            // src={
+            //   "data:image/jpeg;base64," +
+            //   arrayBufferToBase64(profileImage.data.data)
+            // }
             className="profile-image"
             alt="this is the imageeee that back"
           />

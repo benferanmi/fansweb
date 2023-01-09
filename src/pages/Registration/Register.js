@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import banner from "../image/model/twe.jpg";
-import '../css/signup.css'
+import banner from "../../image/model/twe.jpg";
+import './css/signup.css'
 import Footer from '../Component/Footer';
 import Header from '../Component/Header';
 import { useNavigate } from "react-router-dom";
