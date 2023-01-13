@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 
 export const withAuth = (Component) => {
-  
 
   return (props) => {
     // const isLoggedIn = checkLoginStatus(); // Replace with your own login status check

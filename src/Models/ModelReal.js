@@ -25,6 +25,17 @@ const ModelReal = () => {
       });
   }, []);
 
+    //converting array buffer to image url.
+    const arrayBufferToBase64 = (buffer) => {
+      let binary = "";
+      let bytes = new Uint8Array(buffer);
+      let len = bytes.byteLength;
+      for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return window.btoa(binary);
+    };
+
   return (
     <div>
       {data ? (
@@ -33,7 +44,8 @@ const ModelReal = () => {
             return (
               <div className="model-box" key={users._id}>
                 <Link to={`/model/${users._id}`}>
-                  <img src={users.image} alt="" />
+                  <img src={"data:image/jpeg;base64," + arrayBufferToBase64(users.image.data.data)
+              } alt="user profile" />
                 </Link>
                 <p className="modelname">
                   <span>{users.firstName}</span>

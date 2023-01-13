@@ -14,6 +14,8 @@ import ModelProfile from "./Models/ModelProfile";
 import { ModelLogin } from "./pages/Registration/ModelLogin";
 import FanLogin from "./pages/Registration/FanLogin";
 import Useless from "./Models/Useless";
+import PaymentStatus from "./payment/Sucess";
+import Login from "./pages/Registration/Login";
 
 function App() {
   return (
@@ -31,8 +33,11 @@ function App() {
         <Route path="/model/:productId" element={<SingleModel />}></Route>
         <Route path="modelRegistration" element={<ModelForm />}></Route>
         <Route path="register" element={<Register />}></Route>
+        <Route path="login" element={<Login />}></Route>
         <Route path="profile" element={<ModelProfile />}></Route>
         <Route path="buffer" element={<Useless />}></Route>
+        <Route path="sucess" element={<PaymentStatus />}></Route>
+      
       </Routes>
     </>
   );

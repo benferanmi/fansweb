@@ -1,6 +1,7 @@
 import React from 'react';
 
 const PaymentStatus = ({ status }) => {
+
   if (status === 'success') {
     return (
       <div>
@@ -16,7 +17,7 @@ const PaymentStatus = ({ status }) => {
       </div>
     );
   }
-  return null;
+  return <div>Payment still processing </div>;
 };
 
 export default PaymentStatus;
