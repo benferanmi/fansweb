@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,14 +8,14 @@ import {
   faThumbsUp,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import "./model.css";
 import axios from "axios";
 import blur from '../image/blur.PNG'
+import './css/model.css'
 
 const ModelReal = () => {
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [imageBuffer, setImageBuffer] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [imageBuffer, setImageBuffer] = useState(null);
 
   useEffect(() => {
     axios
@@ -37,26 +37,9 @@ const ModelReal = () => {
     }
     return window.btoa(binary);
   };
-  console.log(data);
+  // console.log(data);
 
-  useEffect(() => {
-    if (!data) {
-      setIsLoading(true);
-      console.log("data does not exist");
-      return;
-    }
-    setIsLoading(false);
-    setImageBuffer(data.backgroundImage);
-    if (data.backgroundImage) {
-      console.log("true")
-    }
-  }, [data]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log(imageBuffer);
+  // console.log(imageBuffer);
 
   return (
     <div>
@@ -77,7 +60,6 @@ const ModelReal = () => {
                    className="background-image"
                    alt="this is the imageeee that back"
                  />
-                // <p>image</p>
                   )}
                 </Link>
                 <p className="modelname">

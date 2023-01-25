@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import "../css/form.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
+import Footer from "./Component/Footer";
+import Header from "./Component/Header";
 
 const ModelForm = () => {
   const navigate = useNavigate();

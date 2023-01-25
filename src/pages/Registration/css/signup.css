@@ -225,6 +225,9 @@
     .head22h span {
         font-size: 20px;
     }
+    .benefits {
+        padding-left: 20px ;
+    }
     .fan-benefits h1 {
         font-size: 1.5em;
         font-weight: 500;
@@ -274,11 +277,11 @@
     }
     
     .signup-right button {
-        height: 40px;
-        width: 100%;
         font-size: 20px;
         border-radius: 5px;
-        margin-top: 30px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
     }
     .form-others {
         font-size: 14px;
@@ -301,5 +304,18 @@
         font-size: 14px !important;
         padding-left: 5px !important;
         text-decoration: none;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 850px) {
+    .signup {
+        width: 90%;
+    }
+    .benefits {
+        padding-left: 10px;
+    }
+    .fan-benefits button {
+        display: flex;
+        justify-content: center;
     }
 }

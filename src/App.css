@@ -29,6 +29,7 @@ header {
   cursor: pointer;
   color: black;
 }
+
 .header-left a {
   text-decoration: none;
   font-family: cursive ;
@@ -204,3 +205,26 @@ header {
   }
 }
 /*****this is my name.**/
+
+.login-menu {
+  position: absolute;
+  top: 80px;
+  right: 100px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  padding-right: 10px;
+}
+
+.login-menu ol li a {
+  color: white;
+}
+
+.login-menu ol li {
+  list-style: none;
+  padding-bottom: 10px;
+}
+
+.login-menu ol {
+  text-align: left;
+}

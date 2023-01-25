@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
-import "./profile.css";
-import "./modeldetails.css";
+import Footer from "../pages/Component/Footer";
+import Header from "../pages/Component/Header";
+import "./css/profile.css";
+import "./css/modeldetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
-import { MessageSvg, ShareSvg } from "../Component/Svg";
+import { MessageSvg, ShareSvg } from "../pages/Component/Svg";
 import ModelInfo from "./ModelInfo";
-import withAuth from "../auth/LoginUseruth";
-
-// import {Buffer} from 'buffer'
+import { withAuth } from "../auth/LoginUseruth";
+import { useNavigate, Link } from "react-router-dom";
 
 const ModelProfile = () => {
   const [showAbout, setShowAbout] = useState(true);
-
+  const isLoggedIn = localStorage.getItem('isLoggedIn')
+  const navigate = useNavigate();
+  
   //hide and show content handler
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
@@ -111,119 +112,130 @@ const ModelProfile = () => {
     }
     return window.btoa(binary);
   };
-  return (
-    <>
-      <Header />
-      <div className="header-space"></div>
-      <div className="sin-profile">
-        <div className="profile-bg-image">
-          <div className="profile-bg-button">
-            <form onSubmit={handleImageUpload}>
-              <input id="fileInput" type="file" />
-              <button type="submit"> Update Background Image</button>
-            </form>
+
+  //conditional rendering 
+  if (isLoggedIn === null) {
+    console.log("false")
+  } else if (isLoggedIn === "gh67Pisx678ilhe89054Ikd4mUi80P1wJu5") {
+    console.log("you have not logged in")
+  }   else if (isLoggedIn === "52DF12dh875po96m3a10loo0sils0qoa1ej5hs853uom74a58w4meYf45hgi2sl") {
+    return (
+      <>
+        <Header />
+        <div className="header-space"></div>
+        <div className="sin-profile">
+          <div className="profile-bg-image">
+            <div className="profile-bg-button">
+              <form onSubmit={handleImageUpload}>
+                <input id="fileInput" type="file" />
+                <button type="submit"> Update Background Image</button>
+              </form>
+            </div>
+            <img
+              src={
+                "data:image/jpeg;base64," +
+                arrayBufferToBase64(backgroundImage.data.data)
+              }
+              className="background-image"
+              alt="this is the imageeee that back"
+            />
           </div>
-          <img
-            src={
-              "data:image/jpeg;base64," +
-              arrayBufferToBase64(backgroundImage.data.data)
-            }
-            className="background-image"
-            alt="this is the imageeee that back"
-          />
-        </div>
-        {/* section for profile image update view and update buttons starts  */}
-        <div className="profile-p-image">
-          <div className="profile-p-button">
-            <form onSubmit={handleProfile}>
-              <input id="fileInput" type="file" />
-              {/* <input type="submit" /> */}
-              <button type="submit"> Update Profile Image</button>
-            </form>
+          {/* section for profile image update view and update buttons starts  */}
+          <div className="profile-p-image">
+            <div className="profile-p-button">
+              <form onSubmit={handleProfile}>
+                <input id="fileInput" type="file" />
+                {/* <input type="submit" /> */}
+                <button type="submit"> Update Profile Image</button>
+              </form>
+            </div>
+            <img
+              src={
+                "data:image/jpeg;base64," +
+                arrayBufferToBase64(profileImage.data.data)
+              }
+              className="profile-image"
+              alt="this is the imageeee that back"
+            />
           </div>
-          <img
-            src={
-              "data:image/jpeg;base64," +
-              arrayBufferToBase64(profileImage.data.data)
-            }
-            className="profile-image"
-            alt="this is the imageeee that back"
-          />
+          {/* section for profile image update view and update buttons ends */}
+  
+          <div className="modeldetails">
+            <section className="details-section-one">
+              <div className="details-name">
+                <p className="mainname">
+                  {userDetail.displayName} {userDetail.verified}
+                </p>
+                <p className="name2">@ {userDetail._id}</p>
+              </div>
+  
+              <div className="details-head button">
+                <button type="button" className="pri-button">
+                  <span className="svg-space">{MessageSvg}</span> Message
+                </button>
+                <button
+                  type="button"
+                  className="pri-button-2"
+                  // onClick={shareProfileHandler}
+                >
+                  <span className="svg-space">{ShareSvg}</span> Share Profile
+                </button>
+              </div>
+            </section>
+  
+            <section className="details-about">
+              <h3>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faArrowCircleDown}
+                  color="gold"
+                  onClick={AboutShowhandler}
+                />{" "}
+                About me{" "}
+              </h3>
+              <div>
+                <p>{showAbout && <AboutContent />}</p>
+              </div>
+              firstName = {userDetail.firstName} <br /> lastName ={" "}
+              {userDetail.lastName}
+            </section>
+  
+            <section className="details-spec">
+              <div className="spec-1">
+                <p>Gender: {userDetail.gender}</p>
+                <p>Weight: {userDetail.weight}</p>
+              </div>
+              <div className="spec-2">
+                <p>Sexual orientation: {userDetail.sextualOrientation}</p>
+                <p>Eye Color: {userDetail.eyesColor}</p>
+              </div>
+              <div className="spec-3">
+                <p>Height: {userDetail.height}</p>
+                <p>Zip-Code: {userDetail.zipCode}</p>
+              </div>
+            </section>
+  
+            <section className="details-button">
+              <button type="button">Monthly Subscription | $9.99</button>
+              <button type="button">Yearly Subscription | $66.99</button>
+            </section>
+  
+            {/* other contents */}
+            <section className="details-model-info">
+              <div>
+                <ModelInfo userDetail={userDetail} />
+              </div>
+            </section>
+          </div>
         </div>
-        {/* section for profile image update view and update buttons ends */}
-
-        <div className="modeldetails">
-          <section className="details-section-one">
-            <div className="details-name">
-              <p className="mainname">
-                {userDetail.displayName} {userDetail.verified}
-              </p>
-              <p className="name2">@ {userDetail._id}</p>
-            </div>
-
-            <div className="details-head button">
-              <button type="button" className="pri-button">
-                <span className="svg-space">{MessageSvg}</span> Message
-              </button>
-              <button
-                type="button"
-                className="pri-button-2"
-                // onClick={shareProfileHandler}
-              >
-                <span className="svg-space">{ShareSvg}</span> Share Profile
-              </button>
-            </div>
-          </section>
-
-          <section className="details-about">
-            <h3>
-              {" "}
-              <FontAwesomeIcon
-                icon={faArrowCircleDown}
-                color="gold"
-                onClick={AboutShowhandler}
-              />{" "}
-              About me{" "}
-            </h3>
-            <div>
-              <p>{showAbout && <AboutContent />}</p>
-            </div>
-            firstName = {userDetail.firstName} <br /> lastName ={" "}
-            {userDetail.lastName}
-          </section>
-
-          <section className="details-spec">
-            <div className="spec-1">
-              <p>Gender: {userDetail.gender}</p>
-              <p>Weight: {userDetail.weight}</p>
-            </div>
-            <div className="spec-2">
-              <p>Sexual orientation: {userDetail.sextualOrientation}</p>
-              <p>Eye Color: {userDetail.eyesColor}</p>
-            </div>
-            <div className="spec-3">
-              <p>Height: {userDetail.height}</p>
-              <p>Zip-Code: {userDetail.zipCode}</p>
-            </div>
-          </section>
-
-          <section className="details-button">
-            <button type="button">Monthly Subscription | $9.99</button>
-            <button type="button">Yearly Subscription | $66.99</button>
-          </section>
-
-          {/* other contents */}
-          <section className="details-model-info">
-            <div>
-              <ModelInfo userDetail={userDetail} />
-            </div>
-          </section>
-        </div>
-      </div>
-      <div className="footer-space"></div>
-      <Footer />
-    </>
-  );
+        <div className="footer-space"></div>
+        <Footer />
+      </>
+    );
+  } else {
+    navigate("/register")
+  }
+  
 };
 
-export default withAuth(ModelProfile);
+export default ModelProfile;

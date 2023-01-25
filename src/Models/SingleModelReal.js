@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { MessageSvg, ShareSvg } from "../Component/Svg";
-import Footer from "../Component/Footer";
-import Header from "../Component/Header";
-import "./modeldetails.css";
+import { MessageSvg, ShareSvg } from "../pages/Component/Svg";
+
+import "./css/modeldetails.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
-import Backtotop from "../Component/Backtotop";
+import Backtotop from "../pages/Component/Backtotop";
 import ModelInfo from "./ModelInfo";
 import blur from '../image/blur.PNG'
 import blurBg from "../image/blurbg.png"
 import axios from "axios";
+import Header from '../pages/Component/Header.js'
+import Footer from '../pages/Component/Footer.js'
+
 
 function SingleModel() {
   const [data, setData] = useState(null)
@@ -38,7 +40,7 @@ function SingleModel() {
       }
   // console.log(singleModel)
 
-  }, [data, productId]);
+  } );
 
   const arrayBufferToBase64 = (buffer) => {
     let binary = "";

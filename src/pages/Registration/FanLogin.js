@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
-import banner from "../image/model/twe.jpg";
-import "../css/login.css";
+import banner from "../../image/model/twe.jpg";
+import "./css/login.css";
 import axios from 'axios'
 
-const ModelLogin = () => {
+const FanLogin = () => {
   const [user, setUser] = useState({ email: "", password: "" });
 
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ModelLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const API_URL = "https://xfansbend.herokuapp.com/api/users/";
+    const API_URL = "https://xfansbend.herokuapp.com/api/clients/";
 
     const login = async () => {
       const response = await axios.post(API_URL + "login", user);
@@ -58,7 +58,7 @@ const ModelLogin = () => {
         </div>
 
         <div className="login-right">
-          <h1>MODEL LOG IN</h1>
+          <h1>FAN LOG IN</h1>
 
           <span>
             <hr /> * <hr />
@@ -98,12 +98,9 @@ const ModelLogin = () => {
           </form>
 
           <div className="form-others">
-          <p>
-              Don't have an account yet? <span><Link to="/register">Sign up here.</Link></span>
-            </p>
             <p>
-              are you a Model, <span>Login Here 
-            <Link to="/model-login">Log In.</Link>
+              Don't have an account yet? <span>
+            <Link to="/register"> Sign up here.</Link>
               </span>
             </p>
             <p>
@@ -117,4 +114,4 @@ const ModelLogin = () => {
   );
 };
 
-export default ModelLogin;
+export default FanLogin;

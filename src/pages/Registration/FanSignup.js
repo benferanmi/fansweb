@@ -2,11 +2,11 @@ import React, { useState, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import Header from "../Component/Header";
-// import banner from "../image/model/twe.jpg";
-import "../css/signup.css";
-// import axios from "axios";
+import banner from "../../image/model/twe.jpg";
+import "./css/signup.css";
+import axios from "axios";
 
-const ModelSignUp = () => {
+const FanSignUp = () => {
   const navigate = useNavigate();
   const [info] = useState("please enter your details");
   //mapping around the usertype array ----->>>>> selecting
@@ -28,20 +28,31 @@ const ModelSignUp = () => {
     password: "",
     passwordmatch: "",
     displayName: "",
-    country: "",
-    status: "model",
+    status: "user",
   });
+
 
   const handleSignUp = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setUser({ ...user, [name]: value });
   };
-    
 
   const handleSubmit = useCallback(
     (e) => {
-      e.preventDefault();      
+      e.preventDefault();
+
+      const API_URL = "https://xfansbend.herokuapp.com/api/clients";
+      const fanRegister = async () => {
+        const response = await axios.post(API_URL, user);
+        if (response.data) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+           navigate("/fan-login");
+          console.log("res is true")
+        }
+        return response.data;
+      };
+      
 
       const detailsRequired =
         user.password &&
@@ -50,8 +61,9 @@ const ModelSignUp = () => {
         user.lastName &&
         user.passwordmatch &&
         user.userName;
+        // user.status;
       //navigating user to login page.......
-      if (!user.email) {
+     if (!user.email) {
         window.alert("kindly enter your email")
       } else if (!user.firstName) {
         window.alert("Kindly input your password")
@@ -62,21 +74,18 @@ const ModelSignUp = () => {
       } else if (user.password !== user.passwordmatch) {
         window.alert("password does not match")
       } else if (detailsRequired && user.password === user.passwordmatch) {
-        // registerModels()
-        localStorage.setItem("modelDetails", JSON.stringify(user))
-        navigate("/modelRegistration");
+        fanRegister()
+        // console.log(user.status)
 
         setUser({
           firstName: "",
-          email: "",
           lastName: "",
+          email: "",
           userName: "",
           password: "",
           passwordmatch: "",
-          displayName: "",
         });
       } 
-      //navigating models to additional content 
       else {
         window.alert(info);
       }
@@ -88,11 +97,19 @@ const ModelSignUp = () => {
     <>
       <Header />
       <div className="signup">
+        <div className="signup-left">
+          <img src={banner} alt="" />
+        </div>
+
         <div className="signup-right">
           <div className="signup-head">
-            <h1>Model REGISTRATION</h1>
-            <p>Sign up to make money and interact with your fans.</p>
+            <h1>FAN REGISTRATION</h1>
+            <p>Sign up to interact with your idols.</p>
           </div>
+
+          <span>
+            <hr /> * <hr />
+          </span>
 
           <form>
             <div className="form-flex">
@@ -127,20 +144,12 @@ const ModelSignUp = () => {
                 type="text"
                 name="userName"
                 id="userName"
-                placeholder="Username e.g user1234, fan4543....."
+                placeholder="User Name"
                 onChange={handleSignUp}
                 value={user.userName}
                 autoComplete="off"
               />
             </div>
-            <input
-            className="fwh1"
-            placeholder="Country"
-              type="text"
-              name="country"
-              value={user.country}
-              onChange={handleSignUp}
-            />
             <input
               type="email"
               name="email"
@@ -164,8 +173,8 @@ const ModelSignUp = () => {
               <input
                 type="password"
                 name="passwordmatch"
-                placeholder="Confirm Password"
                 id="matchpassword"
+                placeholder="Confirm Password"
                 onChange={handleSignUp}
                 value={user.passwordmatch}
               />
@@ -182,10 +191,10 @@ const ModelSignUp = () => {
           </form>
           <div className="form-others">
             <p>
-              Already Have an account? <span><Link to="/login">Log In.</Link></span>
+              Already Have an account? <span> <Link to="/login">Log In.</Link></span>
             </p>
             <p>
-              Are you a User, <span> <Link to="/fan-signup">Sign Up here</Link></span>
+              Are you a Model, <span>  <Link to="/model-signup">Sign Up here</Link></span>
             </p>
           </div>
         </div>
@@ -195,4 +204,4 @@ const ModelSignUp = () => {
   );
 };
 
-export default ModelSignUp;
+export default FanSignUp;

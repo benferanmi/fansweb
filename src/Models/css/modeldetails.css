@@ -6,6 +6,10 @@
 .detailshead {
   width: 100%;
   position: relative;
+  height: 200px;
+  background-image: url(https://img.freepik.com/free-vector/sunburst-background-set-three-colors_1017-30067.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .detailshead .bgimg {
@@ -18,6 +22,13 @@
 .profileimg {
   position: absolute;
   bottom: -70px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-image: url(https://img.freepik.com/premium-vector/female-user-profile-avatar-is-woman-character-screen-saver-with-emotions_505620-617.jpg);
+  background-repeat: no-repeat;
+  background-position: cover;
+  background-color: aqua;
 }
 
 .profileimg .avatar {
@@ -29,6 +40,7 @@
   border: 2px solid blue;
   border-radius: 50%;
 }
+
 .details-section-one {
   width: 89%;
   margin-left: 11%;
