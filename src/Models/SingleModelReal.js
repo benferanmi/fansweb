@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { MessageSvg, ShareSvg } from "../Component/Svg";
 import Footer from "../Component/Footer";
@@ -8,15 +8,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";
 import Backtotop from "../Component/Backtotop";
 import ModelInfo from "./ModelInfo";
+import blur from '../image/blur.PNG'
+import blurBg from "../image/blurbg.png"
+import axios from "axios";
 
 function SingleModel() {
+  const [data, setData] = useState(null)
+ const [singleModel, setSingleModel] = useState()
   const { productId } = useParams();
   const urlRef = useRef();
-  const data = JSON.parse(localStorage.getItem("FetchedModelData"));
-  //   const [userData, setUserData] = useState(data);
+  // const data = JSON.parse(localStorage.getItem("FetchedModelData"));
   const [showAbout, setShowAbout] = useState(true);
-  console.log(data);
-  const singleModel = data.find((prod) => prod._id === productId);
+
+  useEffect(() => {
+    axios
+      .get("https://xfansbend.herokuapp.com/api/users/all")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      
+      if (data ) {
+      const singleModel = data.find((prod) => prod._id === productId);
+      if (singleModel) {
+      setSingleModel(singleModel)
+      }
+      }
+  // console.log(singleModel)
+
+  }, [data, productId]);
+
+  const arrayBufferToBase64 = (buffer) => {
+    let binary = "";
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
+
 
   const AboutShowhandler = () => {
     setShowAbout(!showAbout);
@@ -32,6 +66,10 @@ function SingleModel() {
     window.alert("Link has been copied to clipboard!");
   };
 
+  if (!singleModel) {
+    return <div>Loading.....</div>
+  }
+
   return (
     <>
       <Header />
@@ -46,13 +84,39 @@ function SingleModel() {
       </div>
       <div className="modeldetails">
         <div className="detailshead">
-          <img
-            src={singleModel.backgroundImage}
-            alt={`${singleModel.name} background`}
-            className="bgimg"
-          />
+        {!singleModel.backgroundImage ? (
+                    <img 
+                    src={blurBg} 
+                    alt={singleModel.userName} 
+                    className="bgimg" 
+                    />
+                  ) : (
+                    <img
+                   src={
+                     "data:image/jpeg;base64," +
+                     arrayBufferToBase64(singleModel.backgroundImage.data.data)
+                   }
+                   className="bgimg"
+                   alt={`${singleModel.userName} background.`}
+                 />
+                  )}
+
           <div className="profileimg">
-            <img alt="Avatar" src={singleModel.image} className="avatar" />
+          {!singleModel.image ? (
+                    <img 
+                    src={blur} 
+                    alt={singleModel.userName} 
+                    className="avatar"/>
+                  ) : (
+                    <img
+                   src={
+                     "data:image/jpeg;base64," +
+                     arrayBufferToBase64(singleModel.image.data.data)
+                   }
+                   className="avatar"
+                   alt={singleModel.userName + "profile img"}
+                 />
+                  )}
           </div>
         </div>
         <section className="details-section-one">
@@ -110,9 +174,12 @@ function SingleModel() {
 
         {/* other contents */}
         <section className="details-model-info">
-          <div>
-            <ModelInfo singleModel={singleModel} />
-          </div>
+          {/* <div> */}
+            {/* <ModelInfo singleModel={singleModel} />
+             */}
+
+             {/* <p>This User does Not have Any Uploaded Images Yet....</p> */}
+          {/* </div> */}
         </section>
       </div>
       <div className="footer-space"></div>
